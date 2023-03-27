@@ -37,13 +37,15 @@ export default function Home() {
             {products.length &&
               products.map((_product, index) => {
                 return (
-                  <Card
-                    key={index}
-                    name={_product.title}
-                    description={_product.description}
-                  >
-                    {_product.title}
-                  </Card>
+                  <div className="grid">
+                    <Card
+                      key={index}
+                      name={_product.title}
+                      description={_product.description}
+                    >
+                      {_product.title}
+                    </Card>
+                  </div>
                 );
               })}
           </div>
