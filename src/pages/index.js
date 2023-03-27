@@ -33,21 +33,15 @@ export default function Home() {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed commodo
             pulvinar sapien, quis varius lacus euismod et. Etiam id
           </p>
-          <div className="body">
-            {products.length &&
-              products.map((_product, index) => {
-                return (
-                  <div className="grid">
-                    <Card
-                      key={index}
-                      name={_product.title}
-                      description={_product.description}
-                    >
-                      {_product.title}
-                    </Card>
-                  </div>
-                );
-              })}
+          <div className={styles.grid}>
+            {products.map((product) => (
+              <Card
+                key={product.id}
+                name={product.title}
+                description={product.description}
+                image={product.images[0]} // assuming the first image is the main one
+              />
+            ))}
           </div>
         </div>
       </main>
