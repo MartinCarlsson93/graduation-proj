@@ -3,26 +3,39 @@ import { useRouter } from "next/router";
 
 function Header() {
   const router = useRouter();
+
+  const isActive = (pathname) => router.pathname === pathname;
+
   return (
     <div className="header">
-      <div>
-        <h1>Go back</h1>
-        <p>
-          <button onClick={() => router.push("/")}>Home</button>
-        </p>
+      <div className="logo">
+        <img src="/logo.png" alt="Logo" />
       </div>
-      <div>
-        <h1>Contact us</h1>
-        <p>
-          <button onClick={() => router.push("/contact")}>Contact</button>
-        </p>
+      <div className="search">
+        <input type="text" placeholder="Search..." />
+        <button>Search</button>
       </div>
-      <div>
-        <h1>Campains</h1>
-        <p>
-          <button onClick={() => router.push("/campains")}>Campains</button>
-        </p>
-      </div>
+      <nav>
+        <ul>
+          <li className={isActive("/") ? "active" : ""}>
+            <button onClick={() => router.push("/")}>Home</button>
+          </li>
+          <li className={isActive("/contact") ? "active" : ""}>
+            <button onClick={() => router.push("/contact")}>Contact us</button>
+          </li>
+          <li className={isActive("/campaigns") ? "active" : ""}>
+            <button onClick={() => router.push("/campaigns")}>Campaigns</button>
+          </li>
+          <li className="dropdown">
+            <button className="dropbtn">More</button>
+            <div className="dropdown-content">
+              <a href="#">Subpage 1</a>
+              <a href="#">Subpage 2</a>
+              <a href="#">Subpage 3</a>
+            </div>
+          </li>
+        </ul>
+      </nav>
     </div>
   );
 }
