@@ -1,5 +1,7 @@
 import React from "react";
 import { useRouter } from "next/router";
+import weblogo from "../../../public/Web-logo.png";
+import Image from "next/image";
 
 function Header() {
   const router = useRouter();
@@ -8,9 +10,7 @@ function Header() {
 
   return (
     <div className="header">
-      <div className="logo">
-        <img src="/logo.png" alt="Logo" />
-      </div>
+      <Image src={weblogo} alt="Grocify-logo" width={240} height={180} />
       <div className="search">
         <input type="text" placeholder="Search..." />
         <button>Search</button>
