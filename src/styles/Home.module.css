@@ -25,6 +25,14 @@
   gap: 0.5rem;
 }
 
+.header {
+  height: 120px;
+  background-color: "white";
+  display: "flex";
+  flex-direction: "row";
+  justify-content: "space-evenly";
+}
+
 .description p {
   position: relative;
   margin: 0;
@@ -97,7 +105,7 @@
 
 .center::before,
 .center::after {
-  content: '';
+  content: "";
   left: 50%;
   position: absolute;
   filter: blur(45px);
@@ -125,7 +133,7 @@
 
 .thirteen::before,
 .thirteen::after {
-  content: '';
+  content: "";
   position: absolute;
   z-index: -1;
 }
