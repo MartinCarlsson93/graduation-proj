@@ -2,11 +2,29 @@ import React from "react";
 
 function Footer() {
   return (
-    <div style={{ backgroundColor: "darkgoldenrod", height: "200px" }}>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed commodo
-        pulvinar sapien, quis varius lacus euismod et. Etiam id
-      </p>
+    <div className="footerContent">
+      <ul className="nav-footer">
+        <li>
+          <a href="/">Home</a>
+        </li>
+        <li>
+          <a href="/campains">Campains </a>
+        </li>
+        <li>
+          <a href="/contact">Contact </a>
+        </li>
+      </ul>
+      <div className="copyright">
+        Copryright © 2023 BRIX Templates | All Rights Reserved
+      </div>
+      <div className="gitHubLink">
+        <a
+          target="_blank"
+          href="https://github.com/MartinCarlsson93/graduation-proj"
+        >
+          https://github.com/MartinCarlsson93/graduation-proj
+        </a>
+      </div>
     </div>
   );
 }
