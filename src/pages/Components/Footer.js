@@ -15,7 +15,7 @@ function Footer() {
         </li>
       </ul>
       <div className="copyright">
-        Copryright © 2023 BRIX Templates | All Rights Reserved
+        Copryright © 2023 JAM Shopper | All Rights Reserved
       </div>
       <div className="gitHubLink">
         <a
