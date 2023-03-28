@@ -13,7 +13,7 @@ describe("Home", () => {
     );
     render(<Home />);
 
-    const heading = screen.getByText("Welcome");
+    const heading = screen.getByText("Grocify");
 
     expect(heading).toBeInTheDocument();
   });
