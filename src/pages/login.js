@@ -5,7 +5,7 @@ import Hero from "./Components/hero/Hero";
 function Login() {
   const router = useRouter();
   return (
-    <div>
+    <div className="main-container">
       <Hero header="Login" />
       <form>
         <div className="container">

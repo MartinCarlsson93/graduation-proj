@@ -2,7 +2,7 @@ import React from "react";
 import Hero from "./Components/hero/Hero";
 function Cart() {
   return (
-    <div>
+    <div className="main-container">
       <Hero header="Cart" />
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed commodo
