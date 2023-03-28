@@ -26,6 +26,12 @@ function Header() {
           <li className={isActive("/campaigns") ? "active" : ""}>
             <button onClick={() => router.push("/campaigns")}>Campaigns</button>
           </li>
+          <li className={isActive("/login") ? "active" : ""}>
+            <button onClick={() => router.push("/login")}>Login</button>
+          </li>
+          <li className={isActive("/cart") ? "active" : ""}>
+            <button onClick={() => router.push("/cart")}>Cart</button>
+          </li>
           <li className="dropdown">
             <button className="dropbtn">More</button>
             <div className="dropdown-content">
