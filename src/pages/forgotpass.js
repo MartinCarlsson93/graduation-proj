@@ -3,11 +3,23 @@ function ForgottPass() {
   return (
     <div>
       <h1>ForgottPass</h1>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed commodo
-        pulvinar sapien, quis varius lacus euismod et. Etiam
-        idasdasdasdasdasdasdas
-      </p>
+      <form>
+        <div className="container">
+          <p>
+            The password will be sent to the email associated with the userName
+          </p>
+          <label for="username">Username</label>
+          <input
+            className="userName"
+            type="text"
+            placeholder="Enter Username"
+            name="username"
+            required
+          />
+
+          <button type="submit">Send password</button>
+        </div>
+      </form>
     </div>
   );
 }
