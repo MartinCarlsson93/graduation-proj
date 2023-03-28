@@ -1,8 +1,9 @@
 import React from "react";
+import Hero from "./Components/hero/Hero";
 function SignUp() {
   return (
-    <div>
-      <h1>Sign Up</h1>
+    <div className="main-container">
+      <Hero header="Sign up" />
       <form>
         <div className="container">
           <label for="username">Username</label>
