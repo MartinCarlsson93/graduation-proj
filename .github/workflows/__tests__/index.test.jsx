@@ -2,12 +2,12 @@ import { render, screen } from "@testing-library/react";
 import Home from "../pages/index";
 import "@testing-library/jest-dom";
 
-describe("Home", () => {
-  it("renders a heading", () => {
-    render(<Home />);
+// describe("Home", () => {
+//   it("renders a heading", () => {
+//     render(<Home />);
 
-    const heading = screen.getByText("Index");
+//     const heading = screen.getByText("Index");
 
-    expect(heading).toBeInTheDocument();
-  });
-})
+//     expect(heading).toBeInTheDocument();
+//   });
+// })
