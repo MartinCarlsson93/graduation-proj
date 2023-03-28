@@ -28,7 +28,7 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <div>
-          <h1>Index Page</h1>
+          <h1>Welcome</h1>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed commodo
             pulvinar sapien, quis varius lacus euismod et. Etiam id
