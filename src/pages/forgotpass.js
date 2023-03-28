@@ -2,7 +2,7 @@ import React from "react";
 import Hero from "./Components/hero/Hero";
 function ForgottPass() {
   return (
-    <div>
+    <div className="main-container">
       <Hero header="Forgot password" />
       <form>
         <div className="container">

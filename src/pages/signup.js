@@ -2,7 +2,7 @@ import React from "react";
 import Hero from "./Components/hero/Hero";
 function SignUp() {
   return (
-    <div>
+    <div className="main-container">
       <Hero header="Sign up" />
       <form>
         <div className="container">
