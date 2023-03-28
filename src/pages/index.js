@@ -5,18 +5,36 @@ import { useState, useEffect } from "react";
 
 export default function Home() {
   const [products, setProducts] = useState([]);
+  const [textInput, setTextInput] = useState("");
+  const [filteredProducts, setfilteredProducts] = useState([]);
 
   const fetchData = () => {
     fetch(`https://api.escuelajs.co/api/v1/products`)
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
+        setfilteredProducts(data);
       });
   };
 
   useEffect(fetchData, []);
 
-  console.log(products);
+  const handleChange = (e) => {
+    setTextInput(e.target.value);
+  };
+
+  useEffect(() => {
+    if (textInput) {
+      const filtered = filteredProducts.filter((product) => {
+        return product.title.toLowerCase().includes(textInput.toLowerCase());
+      });
+      setfilteredProducts(filtered);
+    } else {
+      setfilteredProducts(products);
+    }
+  }, [textInput]);
+
+  console.log(filteredProducts);
 
   return (
     <>
@@ -26,15 +44,19 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="./favicon.ico" />
       </Head>
-      <main className={styles.main}>
+      <main className="main-container">
         <div>
-          <h1>Welcome</h1>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed commodo
-            pulvinar sapien, quis varius lacus euismod et. Etiam id
-          </p>
+          <div className={styles.herocontainer}>
+            <h1>Grocify</h1>
+            <input
+              className={styles.searchbar}
+              type="text"
+              placeholder="Search product"
+              onChange={handleChange}
+            />
+          </div>
           <div className={styles.grid}>
-            {products.map((product) => (
+            {filteredProducts.map((product) => (
               <Card
                 key={product.id}
                 name={product.title}

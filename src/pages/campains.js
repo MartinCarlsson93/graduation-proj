@@ -1,8 +1,9 @@
 import React from "react";
+import Hero from "./Components/hero/Hero";
 function Campains() {
   return (
     <div>
-      <h1>Kampanjer</h1>
+      <Hero header="Campains" />
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed commodo
         pulvinar sapien, quis varius lacus euismod et. Etiam

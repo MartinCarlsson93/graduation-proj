@@ -1,11 +1,12 @@
 import React from "react";
 import { useRouter } from "next/router";
+import Hero from "./Components/hero/Hero";
 
 function Login() {
   const router = useRouter();
   return (
     <div>
-      <h1>Login</h1>
+      <Hero header="Login" />
       <form>
         <div className="container">
           <label for="username">Username</label>
