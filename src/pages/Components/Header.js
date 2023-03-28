@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/router";
 import weblogo from "../../../public/Web-logo.png";
 import Image from "next/image";
-import ShoppingCart from "../../../public/ShoppingCart.svg"
+import ShoppingCart from "../../../public/ShoppingCart.svg";
 
 function Header() {
   const router = useRouter();
@@ -15,10 +15,15 @@ function Header() {
   };
   return (
     <div className="header">
-      <Image src={weblogo} alt="Grocify-logo" width={240} height={180} />
+      <Image src={weblogo} alt="Grocify-logo" width={240} height={100} />
       <nav>
         <ul className={menuVisible ? "nav-links visible" : "nav-links"}>
-        <Image src={ShoppingCart} alt="Shopping-cart" width={50} height={50} />
+          <Image
+            src={ShoppingCart}
+            alt="Shopping-cart"
+            width={50}
+            height={50}
+          />
           <li className={isActive("/") ? "active" : ""}>
             <button onClick={() => router.push("/")}>Home</button>
           </li>
@@ -29,26 +34,20 @@ function Header() {
             <button onClick={() => router.push("/campaigns")}>Campaigns</button>
           </li>
           <li className="dropdown">
-        <button className="dropbtn">
-          More
-          <div className="arrow-down"></div>
-        </button>
-        <div className="dropdown-content">
-          <a href="#">Subpage 1</a>
-          <a href="#">Subpage 2</a>
-          <a href="#">Subpage 3</a>
-        </div>
-      </li>
-
+            <button className="dropbtn">
+              More
+              <div className="arrow-down"></div>
+            </button>
+            <div className="dropdown-content">
+              <a href="#">Subpage 1</a>
+              <a href="#">Subpage 2</a>
+              <a href="#">Subpage 3</a>
+            </div>
+          </li>
         </ul>
-  
-       
-
       </nav>
     </div>
   );
 }
 
 export default Header;
-
-
