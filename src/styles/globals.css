@@ -249,6 +249,26 @@ a {
   border-radius: 0.25rem;
   font-size: 12px;
 }
+form {
+  border: 3px solid #f1f1f1;
+}
+
+
+.userName,
+.password {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
 
 .footer-subscribe button {
   background-color: #f86f44;
