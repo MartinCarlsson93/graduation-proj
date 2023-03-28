@@ -144,6 +144,20 @@ a {
   border: 2px, solid;
 }
 
+form {
+  border: 3px solid #f1f1f1;
+}
+
+.userName,
+.password {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
