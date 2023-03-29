@@ -1,12 +1,13 @@
 import React from "react";
 import Link from "next/link";
+import styles from "../../styles/footer.module.css";
 
 function Footer() {
   return (
-    <footer className="footer">
-      <div className="container">
-        <div className="footer-top">
-          <div class="footer-contact">
+    <footer className={styles.footer}>
+      <div className={styles.footercontainer}>
+        <div className={styles.footertop}>
+          <div class={styles.footercontact}>
             <h3>Contact Us</h3>
             <ul>
               <li>info@foodapp.com</li>
@@ -14,7 +15,7 @@ function Footer() {
               <li>123 Main Street, Suite 100, Anytown USA</li>
             </ul>
           </div>
-          <div class="footer-social">
+          <div class={styles.footersocial}>
             <h3>Follow Us</h3>
             <ul>
               <li>
@@ -32,10 +33,9 @@ function Footer() {
                   <img src="../../../public/Instagram.svg" alt="Instagram" />
                 </a>
               </li>
-            
             </ul>
           </div>
-          <div className="footer-nav">
+          <div className={styles.footernav}>
             <h3>Explore</h3>
             <ul>
               <li>
@@ -53,7 +53,7 @@ function Footer() {
             </ul>
           </div>
         </div>
-        <div className="footer-bottom">
+        <div className={styles.footerbottom}>
           <p>&copy; 2023 Food App | All Rights Reserved</p>
         </div>
       </div>
