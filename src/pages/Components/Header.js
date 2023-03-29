@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import ShoppingCart from "../../../public/ShoppingCart.svg";
+import hamburgerMenu from "../../../public/hamburgerMenu.svg";
+import styles from "../../styles/header.module.css";
 
 function Header() {
   const router = useRouter();
@@ -14,35 +16,78 @@ function Header() {
   };
 
   return (
-    <div className="header">
+    <div className={styles.header}>
       <a href="/">
         <Image
+          className={styles.weblogo}
           src="/Web-logo.png"
           alt="Grocify-logo"
           width={240}
           height={100}
         />
       </a>
-      {/* <nav>
-        <ul className={menuVisible ? "nav-links visible" : "nav-links"}>
-          <li>
+
+      <div className={styles.dropdown}>
+        <button className={styles.hamburgermenu} onClick={toggleMenu}>
+          <Image
+            src={hamburgerMenu}
+            alt="Hamburger menu"
+            width={40}
+            height={40}
+          />
+        </button>
+        <div
+          className={styles.dropdowncontent}
+          style={{ display: menuVisible ? "block" : "none" }}
+        >
+          <div
+            className={styles.dropdownitem}
+            onClick={() => router.push("/login")}
+          >
             <Image
               src="/userCircle.svg"
               alt="userCircle"
               width={30}
               height={30}
             />
+            <p>Login</p>
+          </div>
+          <div
+            className={styles.dropdownitem}
+            onClick={() => router.push("/contact")}
+          >
             <Image
-              src={ShoppingCart}
-              alt="Shopping-cart"
+              src="/contactUs.svg"
+              alt="Contact us"
               width={30}
-              style={{ marginLeft: "10px" }}
+              height={30}
             />
-          </li>
-        </ul>
-      </nav> */}
-      <nav>
-        <ul className={menuVisible ? "nav-links visible" : "nav-links"}>
+            <p>Contact Us</p>
+          </div>
+          <div
+            className={styles.dropdownitem}
+            onClick={() => router.push("/campains")}
+          >
+            <Image src="/Campain.svg" alt="Campains" width={30} height={30} />
+            <p>Campains</p>
+          </div>
+          <div
+            className={styles.dropdownitem}
+            onClick={() => router.push("/cart")}
+          >
+            <Image
+              src="/ShoppingCart.svg"
+              alt="Shopping Cart"
+              width={30}
+              height={30}
+            />
+            <p>Shopping Cart</p>
+          </div>
+        </div>
+      </div>
+
+      <nav className={styles.navigation}>
+        <ul>
           <li>
             <Image
               src="/userCircle.svg"
@@ -65,17 +110,6 @@ function Header() {
           </li>
           <li className={isActive("/campaigns") ? "active" : ""}>
             <button onClick={() => router.push("/campaigns")}>Campaigns</button>
-          </li>
-          <li className="dropdown">
-            <button className="dropbtn">
-              More
-              <div className="arrow-down"></div>
-            </button>
-            <div className="dropdown-content">
-              <a href="#">Subpage 1</a>
-              <a href="#">Subpage 2</a>
-              <a href="#">Subpage 3</a>
-            </div>
           </li>
         </ul>
       </nav>

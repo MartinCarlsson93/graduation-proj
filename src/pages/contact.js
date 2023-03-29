@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import styles from "../styles/ContactForm.module.css";
+import contactstyles from "../styles/contactus.module.css";
+import formstyles from "../styles/form.module.css";
 import Hero from "./Components/hero/Hero";
 
 function ContactForm() {
@@ -18,14 +19,14 @@ function ContactForm() {
   return (
     <div className="main-container">
       <Hero header="Contact us" />
-      <div className={styles.cardContainer}>
-        <div className={styles.card}>
+      <div className={contactstyles.cardContainer}>
+        <div className={contactstyles.card}>
           <h2>Contact us by letter</h2>
           <p>123 Main Street</p>
           <p>Suite 100</p>
           <p>Anytown USA</p>
         </div>
-        <div className={styles.card}>
+        <div className={contactstyles.card}>
           <h2>Contact us by phone</h2>
           <p>+46770-555 555</p>
           <p>Opening hours:</p>
@@ -35,44 +36,44 @@ function ContactForm() {
 
         <div className="formContainer">
           <form onSubmit={handleSubmit}>
-            <div className="form-container">
-              <label className="form-label" for="name">
+            <div className={formstyles.formcontainer}>
+              <label className={formstyles.formlabel} for="name">
                 Name
               </label>
               <input
-                className="userName"
+                className={formstyles.forminput}
                 type="text"
                 placeholder="Enter Name"
                 name="name"
                 required
               />
 
-              <label className="form-label" for="phonenr">
+              <label className={formstyles.formlabel} for="phonenr">
                 Phonenumber
               </label>
               <input
-                className="userName"
+                className={formstyles.forminput}
                 type="tel"
                 placeholder="Enter Phonenumber"
                 name="phonenr"
               />
 
-              <label className="form-label" for="email">
+              <label className={formstyles.formlabel} for="email">
                 Email
               </label>
               <input
-                className="userName"
+                className={formstyles.forminput}
                 type="email"
                 placeholder="Enter Email"
                 name="email"
                 required
               />
 
-              <label className="form-label" for="textmessage">
+              <label className={formstyles.formlabel} for="textmessage">
                 Type Message
               </label>
               <textarea
-                className="userName"
+                className={formstyles.forminput}
                 type="text"
                 rows={10}
                 placeholder="Write message"
@@ -80,7 +81,7 @@ function ContactForm() {
                 required
               />
 
-              <button className="content-button" type="submit">
+              <button className={formstyles.contentbutton} type="submit">
                 Submit
               </button>
             </div>
