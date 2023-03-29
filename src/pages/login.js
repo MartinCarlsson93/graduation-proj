@@ -7,9 +7,11 @@ function Login() {
   return (
     <div className="main-container">
       <Hero header="Login" />
-      <form className="content">
-        <div className="container">
-          <label for="username">Username</label>
+      <form>
+        <div className="form-container">
+          <label className="form-label" for="username">
+            Username
+          </label>
           <input
             className="userName"
             type="text"
@@ -18,7 +20,9 @@ function Login() {
             required
           />
 
-          <label for="password">Password</label>
+          <label className="form-label" for="password">
+            Password
+          </label>
           <input
             className="password"
             type="password"
@@ -30,21 +34,20 @@ function Login() {
           <button className="content-button" type="submit">
             Login
           </button>
-        </div>
-
-        <div className="button-container">
-          <button
-            className="content-button"
-            onClick={() => router.push("/signup")}
-          >
-            Sign Up
-          </button>
-          <button
-            className="content-button"
-            onClick={() => router.push("/forgotpass")}
-          >
-            Forgot Password
-          </button>
+          <div className="button-container">
+            <button
+              className="content-button"
+              onClick={() => router.push("/signup")}
+            >
+              Sign Up
+            </button>
+            <button
+              className="content-button"
+              onClick={() => router.push("/forgotpass")}
+            >
+              Forgot Password
+            </button>
+          </div>
         </div>
       </form>
     </div>
