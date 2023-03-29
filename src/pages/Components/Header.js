@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import ShoppingCart from "../../../public/ShoppingCart.svg";
 import hamburgerMenu from "../../../public/hamburgerMenu.svg";
+import styles from "../../styles/header.module.css";
 
 function Header() {
   const router = useRouter();
@@ -15,24 +16,25 @@ function Header() {
   };
 
   return (
-    <div className="header">
+    <div className={styles.header}>
       <a href="/">
         <Image
+          className={styles.weblogo}
           src="/Web-logo.png"
           alt="Grocify-logo"
           width={240}
           height={100}
         />
       </a>
-      <button className="hamburger-menu" onClick={toggleMenu}>
+      <button className={styles.hamburgermenu} onClick={toggleMenu}>
         <Image
           src={hamburgerMenu}
           alt="Hamburger menu"
-          width={30}
-          height={30}
+          width={40}
+          height={40}
         />
       </button>
-      <nav className="navigation">
+      <nav className={styles.navigation}>
         <ul className={menuVisible ? "nav-links visible" : "nav-links"}>
           <li>
             <Image
@@ -56,18 +58,6 @@ function Header() {
           </li>
           <li className={isActive("/campaigns") ? "active" : ""}>
             <button onClick={() => router.push("/campaigns")}>Campaigns</button>
-          </li>
-
-          <li className="dropdown">
-            <button className="dropbtn">
-              More
-              <div className="arrow-down"></div>
-            </button>
-            <div className="dropdown-content">
-              <a href="#">Subpage 1</a>
-              <a href="#">Subpage 2</a>
-              <a href="#">Subpage 3</a>
-            </div>
           </li>
         </ul>
       </nav>
