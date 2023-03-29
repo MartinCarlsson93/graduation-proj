@@ -60,15 +60,17 @@ export default function Home() {
               <Image src={search} alt="search" width={50} height={50} />
             </div>
           </div>
-          <div className={styles.grid}>
-            {filteredProducts.map((product) => (
-              <Card
-                key={product.id}
-                name={product.title}
-                description={product.description}
-                image={product.images[0]} // assuming the first image is the main one
-              />
-            ))}
+          <div className={styles.content}>
+            <div className={styles.grid}>
+              {filteredProducts.map((product) => (
+                <Card
+                  key={product.id}
+                  name={product.title}
+                  description={product.description}
+                  image={product.images[0]} // assuming the first image is the main one
+                />
+              ))}
+            </div>
           </div>
         </div>
       </main>
