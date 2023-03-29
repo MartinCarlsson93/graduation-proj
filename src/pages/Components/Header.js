@@ -23,7 +23,24 @@ function Header() {
         <ul className={menuVisible ? "nav-links visible" : "nav-links"}>
           <li>
           <Image src="/userCircle.svg" alt="userCircle" width={30} height={30} />
-            <Image src={ShoppingCart} alt="Shopping-cart" width={30} style={{marginLeft: "10px"}} /> 
+            <Image src={ShoppingCart} alt="Shopping-cart" width={30} style={{marginLeft: "10px"}} />
+            </li> 
+            </ul>
+      <Image src={weblogo} alt="Grocify-logo" width={240} height={100} />
+</nav>
+      <nav>
+        <ul className={menuVisible ? "nav-links visible" : "nav-links"}>
+          <Image
+            src={ShoppingCart}
+            alt="Shopping-cart"
+            width={50}
+            height={50}
+          />
+          <li className={isActive("/") ? "active" : ""}>
+            <button onClick={() => router.push("/")}>Home</button>
+          </li>
+          <li className={isActive("/contact") ? "active" : ""}>
+            <button onClick={() => router.push("/contact")}>Contact us</button>
           </li>
           <li className={isActive("/campaigns") ? "active" : ""}>
             <button onClick={() => router.push("/campaigns")}>Campaigns</button>
@@ -46,6 +63,7 @@ function Header() {
       </nav>
     </div>
   );
+  
 }
 
 export default Header;

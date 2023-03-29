@@ -1,8 +1,9 @@
 import React from "react";
+import Hero from "./Components/hero/Hero";
 function ForgottPass() {
   return (
-    <div>
-      <h1>ForgottPass</h1>
+    <div className="main-container">
+      <Hero header="Forgot password" />
       <form>
         <div className="container">
           <p>
