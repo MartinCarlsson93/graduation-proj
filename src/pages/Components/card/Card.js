@@ -36,7 +36,7 @@ const Card = ({ name, description, image }) => {
       </div>
       <div className={styles.content}>
         <h3>{name}</h3>
-        <p>{description}</p>
+        <p style={{ height: "80px" }}>{description}</p>
         <div className={styles.quantity}>
           <Image
             src={minus}

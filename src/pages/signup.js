@@ -5,8 +5,10 @@ function SignUp() {
     <div className="main-container">
       <Hero header="Sign up" />
       <form>
-        <div className="container">
-          <label for="username">Username</label>
+        <div className="form-container">
+          <label className="form-label" for="username">
+            Username
+          </label>
           <input
             className="userName"
             type="text"
@@ -14,7 +16,9 @@ function SignUp() {
             name="username"
             required
           />
-          <label for="firstname">Firstname</label>
+          <label className="form-label" for="firstname">
+            Firstname
+          </label>
           <input
             className="userName"
             type="text"
@@ -22,7 +26,9 @@ function SignUp() {
             name="firstname"
             required
           />
-          <label for="lastname">Lastname</label>
+          <label className="form-label" for="lastname">
+            Lastname
+          </label>
           <input
             className="userName"
             type="text"
@@ -30,7 +36,9 @@ function SignUp() {
             name="lastname"
             required
           />
-          <label for="email">Email</label>
+          <label className="form-label" for="email">
+            Email
+          </label>
           <input
             className="userName"
             type="email"
@@ -38,7 +46,9 @@ function SignUp() {
             name="email"
             required
           />
-          <label for="birthdate">Birthday</label>
+          <label className="form-label" for="birthdate">
+            Birthday
+          </label>
           <input
             className="userName"
             type="date"
@@ -46,7 +56,9 @@ function SignUp() {
             name="birthdate"
             required
           />
-          <label for="password">Password</label>
+          <label className="form-label" for="password">
+            Password
+          </label>
           <input
             className="password"
             type="password"
@@ -55,7 +67,9 @@ function SignUp() {
             required
           />
 
-          <button type="submit">Create account</button>
+          <button className="content-button" type="submit">
+            Create account
+          </button>
         </div>
       </form>
     </div>
