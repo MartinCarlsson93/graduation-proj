@@ -18,7 +18,9 @@ function ForgottPass() {
             required
           />
 
-          <button type="submit">Send password</button>
+          <button className="content-button" type="submit">
+            Send password
+          </button>
         </div>
       </form>
     </div>

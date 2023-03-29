@@ -55,7 +55,9 @@ function SignUp() {
             required
           />
 
-          <button type="submit">Create account</button>
+          <button className="content-button" type="submit">
+            Create account
+          </button>
         </div>
       </form>
     </div>

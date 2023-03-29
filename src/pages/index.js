@@ -3,12 +3,15 @@ import Image from "next/image";
 import styles from "@/styles/Home.module.css";
 import Card from "./Components/card/Card";
 import search from "../../public/Search.svg";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 export default function Home() {
   const [products, setProducts] = useState([]);
   const [textInput, setTextInput] = useState("");
   const [filteredProducts, setfilteredProducts] = useState([]);
+
+  const [addToCart, setAddToCart] = useState([]);
+  const [favourites, setFavourites] = useState([]);
 
   const fetchData = () => {
     fetch(`https://api.escuelajs.co/api/v1/products`)
