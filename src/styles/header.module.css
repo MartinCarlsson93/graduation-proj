@@ -44,6 +44,32 @@
   border: 0 !important;
 }
 
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdowncontent {
+  position: absolute;
+  background-color: white;
+  opacity: 0.8;
+  top: 70px;
+  right: 0;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 8px;
+  width: 200px;
+}
+.dropdownitem {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 4px;
+  border-bottom: 3px solid #f86f44;
+}
+
 /* Tablet and Smaller Desktop */
 @media (min-width: 701px) and (max-width: 1120px) {
   .navigation {
