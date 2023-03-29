@@ -15,6 +15,13 @@
   margin-bottom: 1rem;
 }
 
+.icons {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .title {
   font-size: 1.2rem;
   font-weight: bold;
@@ -29,6 +36,7 @@
 .quantity {
   display: flex;
   align-items: center;
+  justify-content: center;
   margin-bottom: 0.5rem;
 }
 

@@ -1,6 +1,8 @@
 import Head from "next/head";
+import Image from "next/image";
 import styles from "@/styles/Home.module.css";
 import Card from "./Components/card/Card";
+import search from "../../public/Search.svg";
 import { useState, useEffect } from "react";
 
 export default function Home() {
@@ -48,12 +50,15 @@ export default function Home() {
         <div>
           <div className={styles.herocontainer}>
             <h1>Grocify</h1>
-            <input
-              className={styles.searchbar}
-              type="text"
-              placeholder="Search product"
-              onChange={handleChange}
-            />
+            <div className={styles.searchbox}>
+              <input
+                className={styles.searchbar}
+                type="text"
+                placeholder="Search product"
+                onChange={handleChange}
+              />
+              <Image src={search} alt="search" width={50} height={50} />
+            </div>
           </div>
           <div className={styles.grid}>
             {filteredProducts.map((product) => (

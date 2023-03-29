@@ -1,9 +1,9 @@
 import React from "react";
 import Hero from "./Components/hero/Hero";
-function Campains() {
+function Campaigns() {
   return (
     <div className="main-container">
-      <Hero header="Campains" />
+      <Hero header="Campaigns" />
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed commodo
         pulvinar sapien, quis varius lacus euismod et. Etiam
@@ -13,4 +13,4 @@ function Campains() {
   );
 }
 
-export default Campains;
+export default Campaigns;
