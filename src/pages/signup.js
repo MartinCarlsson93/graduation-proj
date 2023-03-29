@@ -1,73 +1,74 @@
 import React from "react";
 import Hero from "./Components/hero/Hero";
+import formstyles from "../styles/form.module.css";
 function SignUp() {
   return (
     <div className="main-container">
       <Hero header="Sign up" />
       <form>
-        <div className="form-container">
-          <label className="form-label" for="username">
+        <div className={formstyles.formcontainer}>
+          <label className={formstyles.formlabel} for="username">
             Username
           </label>
           <input
-            className="userName"
+            className={formstyles.forminput}
             type="text"
             placeholder="Enter Username"
             name="username"
             required
           />
-          <label className="form-label" for="firstname">
+          <label className={formstyles.formlabel} for="firstname">
             Firstname
           </label>
           <input
-            className="userName"
+            className={formstyles.forminput}
             type="text"
             placeholder="Enter Firstname"
             name="firstname"
             required
           />
-          <label className="form-label" for="lastname">
+          <label className={formstyles.formlabel} for="lastname">
             Lastname
           </label>
           <input
-            className="userName"
+            className={formstyles.forminput}
             type="text"
             placeholder="Enter Lastname"
             name="lastname"
             required
           />
-          <label className="form-label" for="email">
+          <label className={formstyles.formlabel} for="email">
             Email
           </label>
           <input
-            className="userName"
+            className={formstyles.forminput}
             type="email"
             placeholder="Enter Email"
             name="email"
             required
           />
-          <label className="form-label" for="birthdate">
+          <label className={formstyles.formlabel} for="birthdate">
             Birthday
           </label>
           <input
-            className="userName"
+            className={formstyles.forminput}
             type="date"
             placeholder="Enter Birthday"
             name="birthdate"
             required
           />
-          <label className="form-label" for="password">
+          <label className={formstyles.formlabel} for="password">
             Password
           </label>
           <input
-            className="password"
+            className={formstyles.forminput}
             type="password"
             placeholder="Enter Password"
             name="password"
             required
           />
 
-          <button className="content-button" type="submit">
+          <button className={formstyles.contentbutton} type="submit">
             Create account
           </button>
         </div>
