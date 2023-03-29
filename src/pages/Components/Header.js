@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import ShoppingCart from "../../../public/ShoppingCart.svg";
+import hamburgerMenu from "../../../public/hamburgerMenu.svg";
 
 function Header() {
   const router = useRouter();
@@ -23,25 +24,15 @@ function Header() {
           height={100}
         />
       </a>
-      {/* <nav>
-        <ul className={menuVisible ? "nav-links visible" : "nav-links"}>
-          <li>
-            <Image
-              src="/userCircle.svg"
-              alt="userCircle"
-              width={30}
-              height={30}
-            />
-            <Image
-              src={ShoppingCart}
-              alt="Shopping-cart"
-              width={30}
-              style={{ marginLeft: "10px" }}
-            />
-          </li>
-        </ul>
-      </nav> */}
-      <nav>
+      <button className="hamburger-menu" onClick={toggleMenu}>
+        <Image
+          src={hamburgerMenu}
+          alt="Hamburger menu"
+          width={30}
+          height={30}
+        />
+      </button>
+      <nav className="navigation">
         <ul className={menuVisible ? "nav-links visible" : "nav-links"}>
           <li>
             <Image
@@ -66,6 +57,7 @@ function Header() {
           <li className={isActive("/campaigns") ? "active" : ""}>
             <button onClick={() => router.push("/campaigns")}>Campaigns</button>
           </li>
+
           <li className="dropdown">
             <button className="dropbtn">
               More
