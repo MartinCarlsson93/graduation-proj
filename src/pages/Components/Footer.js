@@ -4,7 +4,7 @@ import Link from "next/link";
 function Footer() {
   return (
     <footer className="footer">
-      <div className="container">
+      <div className="footer-container">
         <div className="footer-top">
           <div class="footer-contact">
             <h3>Contact Us</h3>
@@ -32,7 +32,6 @@ function Footer() {
                   <img src="../../../public/Instagram.svg" alt="Instagram" />
                 </a>
               </li>
-            
             </ul>
           </div>
           <div className="footer-nav">
