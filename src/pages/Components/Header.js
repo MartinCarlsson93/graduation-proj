@@ -42,7 +42,7 @@ function Header() {
         >
           <div
             className={styles.dropdownitem}
-            onClick={() => router.push("/login")}
+            onClick={() => router.push("/my-profile")}
           >
             <Image
               src="/userCircle.svg"
@@ -95,7 +95,7 @@ function Header() {
               width={30}
               height={30}
               style={{ cursor: "pointer" }}
-              onClick={() => router.push("/login")}
+              onClick={() => router.push("/my-profile")}
             />
             <Image
               src={ShoppingCart}
