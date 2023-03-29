@@ -26,16 +26,68 @@ function Header() {
           height={100}
         />
       </a>
-      <button className={styles.hamburgermenu} onClick={toggleMenu}>
-        <Image
-          src={hamburgerMenu}
-          alt="Hamburger menu"
-          width={40}
-          height={40}
-        />
-      </button>
+
+      <div className={styles.dropdown}>
+        <button className={styles.hamburgermenu} onClick={toggleMenu}>
+          <Image
+            src={hamburgerMenu}
+            alt="Hamburger menu"
+            width={40}
+            height={40}
+          />
+        </button>
+        <div
+          className={styles.dropdowncontent}
+          style={{ display: menuVisible ? "block" : "none" }}
+        >
+          <div
+            className={styles.dropdownitem}
+            onClick={() => router.push("/login")}
+          >
+            <Image
+              src="/userCircle.svg"
+              alt="userCircle"
+              width={30}
+              height={30}
+            />
+            <p>Login</p>
+          </div>
+          <div
+            className={styles.dropdownitem}
+            onClick={() => router.push("/contact")}
+          >
+            <Image
+              src="/contactUs.svg"
+              alt="Contact us"
+              width={30}
+              height={30}
+            />
+            <p>Contact Us</p>
+          </div>
+          <div
+            className={styles.dropdownitem}
+            onClick={() => router.push("/campains")}
+          >
+            <Image src="/Campain.svg" alt="Campains" width={30} height={30} />
+            <p>Campains</p>
+          </div>
+          <div
+            className={styles.dropdownitem}
+            onClick={() => router.push("/cart")}
+          >
+            <Image
+              src="/ShoppingCart.svg"
+              alt="Shopping Cart"
+              width={30}
+              height={30}
+            />
+            <p>Shopping Cart</p>
+          </div>
+        </div>
+      </div>
+
       <nav className={styles.navigation}>
-        <ul className={menuVisible ? "nav-links visible" : "nav-links"}>
+        <ul>
           <li>
             <Image
               src="/userCircle.svg"
