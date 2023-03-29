@@ -25,11 +25,26 @@ a {
   text-decoration: none;
 }
 
-.content {
-  background-color: white;
-}
-.container {
+.form-container {
   background-color: white important;
+  max-width: 800px;
+  border: 2px solid #f86f44;
+  padding: 16px;
+  margin: 32px;
+  border-radius: 32px;
+}
+
+.form-label {
+  color: #f86f44;
+  font-size: 18px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.form-input {
+  border: 1px solid #f86f44;
+  color: #f86f44;
+  font-size: 16px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .content-button {
@@ -329,8 +344,11 @@ a {
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
-  border: 1px solid #ccc;
   box-sizing: border-box;
+  border: 1px solid black;
+  color: #f86f44;
+  font-size: 16px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .footer-nav h3 {

@@ -5,11 +5,13 @@ function ForgottPass() {
     <div className="main-container">
       <Hero header="Forgot password" />
       <form>
-        <div className="container">
+        <div className="form-container">
           <p>
             The password will be sent to the email associated with the userName
           </p>
-          <label for="username">Username</label>
+          <label className="form-label" for="username">
+            Username
+          </label>
           <input
             className="userName"
             type="text"

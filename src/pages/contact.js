@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "../styles/ContactForm.module.css";
+import Hero from "./Components/hero/Hero";
 
 function ContactForm() {
   const [name, setName] = useState("");
@@ -15,7 +16,8 @@ function ContactForm() {
   };
 
   return (
-    <div>
+    <div className="main-container">
+      <Hero header="Contact us" />
       <div className={styles.cardContainer}>
         <div className={styles.card}>
           <h2>Contact us by letter</h2>
@@ -30,54 +32,61 @@ function ContactForm() {
           <p>Monday to Friday</p>
           <p> 9:00 AM to 5:00 PM </p>
         </div>
-      </div>
-      <form onSubmit={handleSubmit}>
-        <div className={styles.formContainer}>
-          <div className={styles["form-field"]}>
-            <label className={styles["label-container"]} htmlFor="name">
-              Name:
-            </label>
-            <input
-              id="name"
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div className={styles["form-field"]}>
-            <label htmlFor="phoneNumber">Phone number:</label>
-            <input
-              id="phoneNumber"
-              type="tel"
-              value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
-            />
-          </div>
-          <div className={styles["form-field"]}>
-            <label htmlFor="email">Email:</label>
-            <input
-              id="email"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-          <div className={styles["form-field"]}>
-            <label htmlFor="message">Message:</label>
-            <textarea
-              id="message"
-              rows="5"
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-            ></textarea>
-          </div>
-          <div className={styles["form-field"]}>
-            <button type="submit" className={styles.submitButton}>
-              Submit
-            </button>
-          </div>
+
+        <div className="formContainer">
+          <form onSubmit={handleSubmit}>
+            <div className="form-container">
+              <label className="form-label" for="name">
+                Name
+              </label>
+              <input
+                className="userName"
+                type="text"
+                placeholder="Enter Name"
+                name="name"
+                required
+              />
+
+              <label className="form-label" for="phonenr">
+                Phonenumber
+              </label>
+              <input
+                className="userName"
+                type="tel"
+                placeholder="Enter Phonenumber"
+                name="phonenr"
+              />
+
+              <label className="form-label" for="email">
+                Email
+              </label>
+              <input
+                className="userName"
+                type="email"
+                placeholder="Enter Email"
+                name="email"
+                required
+              />
+
+              <label className="form-label" for="textmessage">
+                Type Message
+              </label>
+              <textarea
+                className="userName"
+                type="text"
+                rows={10}
+                placeholder="Write message"
+                name="textmessage"
+                required
+              />
+
+              <button className="content-button" type="submit">
+                Submit
+              </button>
+            </div>
+          </form>
         </div>
-      </form>
+      </div>
     </div>
   );
 }
