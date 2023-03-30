@@ -7,6 +7,7 @@ function MyProfile() {
   const [loggedIn, setLoggedIn] = useState(false);
   const router = useRouter();
   return (
+    // TODO SET A HANDLER THAT COMES HERE IF LOGGED IN, OTHERWISE GO TO LOGIN PAGE
     <div className="main-container">
       <Hero header="My profile" />
       <button
