@@ -18,37 +18,41 @@
 }
 
 .card:nth-child(1) {
-  top: 1rem; /* set top to 1 rem for the first card */
+  top: 1rem;
   left: 18%;
 }
 
 .card:nth-child(2) {
-  top: 1rem; /* set top to 0 for the second card */
+  top: 1rem;
   left: 62%;
 }
 
-@media (max-width: 768px) {
-  /* Mobile view */
-  .cardContainer {
-    height: 300px;
-    width: 100%;
-    background-color: #f86f44;
-    align-items: center;
-    justify-content: center;
+@media (max-width: 769px) {
+  .main-container {
     display: flex;
-    flex-direction: row;
-    color: white;
-    margin-bottom: 16px;
+    flex-direction: column;
+    align-items: center;
   }
 
-  .card {
-    margin-top: 1rem; /* Add margin between cards */
-  }
-  .card:nth-child(1) {
-    top: 2rem; /* set top to 1 rem for the first card */
+  .cardContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 32px;
   }
 
-  .card:nth-child(2) {
-    top: 1rem; /* set top to 0 for the second card */
+  .contactstyles.card {
+    width: 200%;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .formContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
 }
