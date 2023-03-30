@@ -39,7 +39,7 @@ function Login() {
   return (
     <div className="main-container">
       <Hero header="Login" />
-      <form onSubmit={handleSubmit}>
+      <form className={formstyles.formstyle}>
         <div className={formstyles.formcontainer}>
           <label className={formstyles.formlabel} for="username">
             Username
