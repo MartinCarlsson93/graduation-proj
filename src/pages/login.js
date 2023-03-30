@@ -20,14 +20,16 @@ function Login() {
         console.log("YEEES!");
         if (user.password === inputPassword) {
           console.log("Correct password aswell");
-          setLogin(!login);
+          setLogin(true);
           //TODO CREATE A HANDLER SO THAT WHEN LOGGED IN NEVER GO HERE GO TO PROFILE INSTEAD
         } else {
           console.log("Wrong Password");
+          setLogin(false);
           //TODO SHOW THIS AS A LABEL
         }
       } else {
         console.log("NOOO");
+        setLogin(false);
         // TODO SHOW THIS AS A LABEL
       }
     });
