@@ -24,7 +24,7 @@ function ForgottPass() {
   return (
     <div className="main-container">
       <Hero header="Forgot password" />
-      <form onSubmit={handleSubmit}>
+      <form className={formstyles.formstyle}>
         <div className={formstyles.formcontainer}>
           <p>
             The password will be sent to the email associated with the userName

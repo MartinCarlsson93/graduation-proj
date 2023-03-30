@@ -28,7 +28,7 @@ function SignUp() {
   return (
     <div className="main-container">
       <Hero header="Sign up" />
-      <form onSubmit={handleSubmit}>
+      <form className={formstyles.formstyle}>
         <div className={formstyles.formcontainer}>
           <label className={formstyles.formlabel} for="username">
             Username

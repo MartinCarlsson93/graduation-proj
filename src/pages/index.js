@@ -5,6 +5,7 @@ import Card from "./Components/card/Card";
 import search from "../../public/Assets/svgs/Search.svg";
 import { useState, useEffect, useCallback } from "react";
 
+
 export default function Home() {
   const [products, setProducts] = useState([]);
   const [textInput, setTextInput] = useState("");
@@ -14,13 +15,17 @@ export default function Home() {
   const [favourites, setFavourites] = useState([]);
 
   const fetchData = () => {
-    fetch(`https://api.escuelajs.co/api/v1/products`)
+    fetch("/Data/food.json")
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
         setfilteredProducts(data);
+      })
+      .catch((error) => {
+        console.log(error);
       });
   };
+  
 
   useEffect(fetchData, []);
 
@@ -67,10 +72,10 @@ export default function Home() {
             <div className={styles.grid}>
               {filteredProducts.map((product) => (
                 <Card
-                  key={product.id}
+                  key={product.title}
                   name={product.title}
                   description={product.description}
-                  image={product.images[0]} // assuming the first image is the main one
+                  image={`/Assets/images/${product.filename}`} // assuming the images are in the Assets/images directory
                 />
               ))}
             </div>

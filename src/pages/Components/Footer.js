@@ -7,7 +7,7 @@ function Footer() {
     <footer className={styles.footer}>
       <div className={styles.footercontainer}>
         <div className={styles.footertop}>
-          <div class={styles.footercontact}>
+          <div className={styles.footercontact}>
             <h3>Contact Us</h3>
             <ul>
               <li>info@foodapp.com</li>
@@ -15,22 +15,22 @@ function Footer() {
               <li>123 Main Street, Suite 100, Anytown USA</li>
             </ul>
           </div>
-          <div class={styles.footersocial}>
+          <div className={styles.footersocial}>
             <h3>Follow Us</h3>
             <ul>
               <li>
                 <a href="#">
-                  <img src="../../../public/email.svg" alt="Email" />
+                  <img src="/Assets/svgs/email.svg" alt="Email" />
                 </a>
               </li>
               <li>
                 <a href="#">
-                  <img src="../../../public/Facebook.svg" alt="Facebook" />
+                  <img src="/Assets/svgs/Facebook.svg" alt="Facebook" />
                 </a>
               </li>
               <li>
                 <a href="#">
-                  <img src="../../../public/Instagram.svg" alt="Instagram" />
+                  <img src="Assets/svgs/Instagram.svg" alt="Instagram" />
                 </a>
               </li>
             </ul>
