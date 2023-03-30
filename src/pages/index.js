@@ -2,7 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "@/styles/Home.module.css";
 import Card from "./Components/card/Card";
-import search from "../../public/Search.svg";
+import search from "../../public/Assets/svgs/Search.svg";
 import { useState, useEffect, useCallback } from "react";
 
 export default function Home() {

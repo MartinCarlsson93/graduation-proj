@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import ShoppingCart from "../../../public/ShoppingCart.svg";
-import hamburgerMenu from "../../../public/hamburgerMenu.svg";
+import ShoppingCart from "../../../public/Assets/svgs/ShoppingCart.svg";
+import hamburgerMenu from "../../../public/Assets/svgs/hamburgerMenu.svg";
 import styles from "../../styles/header.module.css";
 
 function Header() {
@@ -42,10 +42,10 @@ function Header() {
         >
           <div
             className={styles.dropdownitem}
-            onClick={() => router.push("/login")}
+            onClick={() => router.push("/my-profile")}
           >
             <Image
-              src="/userCircle.svg"
+              src="/assets/svgs/userCircle.svg"
               alt="userCircle"
               width={30}
               height={30}
@@ -57,7 +57,7 @@ function Header() {
             onClick={() => router.push("/contact")}
           >
             <Image
-              src="/contactUs.svg"
+              src="/assets/svgs/contactUs.svg"
               alt="Contact us"
               width={30}
               height={30}
@@ -68,7 +68,12 @@ function Header() {
             className={styles.dropdownitem}
             onClick={() => router.push("/campains")}
           >
-            <Image src="/Campain.svg" alt="Campains" width={30} height={30} />
+            <Image
+              src="/assets/svgs/Campain.svg"
+              alt="Campains"
+              width={30}
+              height={30}
+            />
             <p>Campains</p>
           </div>
           <div
@@ -76,7 +81,7 @@ function Header() {
             onClick={() => router.push("/cart")}
           >
             <Image
-              src="/ShoppingCart.svg"
+              src="/assets/svgs/ShoppingCart.svg"
               alt="Shopping Cart"
               width={30}
               height={30}
@@ -90,12 +95,12 @@ function Header() {
         <ul>
           <li>
             <Image
-              src="/userCircle.svg"
+              src="/assets/svgs/userCircle.svg"
               alt="userCircle"
               width={30}
               height={30}
               style={{ cursor: "pointer" }}
-              onClick={() => router.push("/login")}
+              onClick={() => router.push("/my-profile")}
             />
             <Image
               src={ShoppingCart}
