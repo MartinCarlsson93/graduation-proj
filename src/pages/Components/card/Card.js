@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import styles from "./Card.module.css";
-import plus from "../../../../public/Add.svg";
-import minus from "../../../../public/Remove.svg";
-import favourites from "../../../../public/Favourites.svg";
-import campain from "../../../../public/Campain.svg";
+import plus from "../../../../public/Assets/svgs/Add.svg";
+import minus from "../../../../public/Assets/svgs/Remove.svg";
+import favourites from "../../../../public/Assets/svgs/Favourites.svg";
+import campain from "../../../../public/Assets/svgs/Campain.svg";
 
 const Card = ({ name, description, image }) => {
   const [quantity, setQuantity] = useState(0);
