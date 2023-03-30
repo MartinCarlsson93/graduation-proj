@@ -1,11 +1,34 @@
 import React from "react";
 import Hero from "./Components/hero/Hero";
 import formstyles from "../styles/form.module.css";
+
 function SignUp() {
+  let users = require("../../Data/person.json");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const data = {
+      id: users.length ? Math.max(...users.map((x) => x.id)) + 1 : 1,
+      username: event.target.username.value,
+      firstname: event.target.firstname.value,
+      lastname: event.target.lastname.value,
+      email: event.target.email.value,
+      birthday: event.target.birthdate.value,
+      password: event.target.password.value,
+    };
+
+    const jsonData = JSON.stringify(data);
+
+    console.log(jsonData);
+
+    //TODO ADD SO THAT WHEN WE SAVE IS ADDED TO PERSON JSON
+  };
+
   return (
     <div className="main-container">
       <Hero header="Sign up" />
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className={formstyles.formcontainer}>
           <label className={formstyles.formlabel} for="username">
             Username
