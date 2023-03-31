@@ -6,6 +6,7 @@ import formstyles from "../styles/form.module.css";
 function Login() {
   const router = useRouter();
   const [login, setLogin] = useState(false);
+  const [answer, setAnswer] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -13,33 +14,30 @@ function Login() {
     const inputUserName = event.target.username.value;
     const inputPassword = event.target.password.value;
 
-    let users = require("../../Data/person.json");
+    let users = require("../../public/Data/person.json");
 
-    users.forEach((user) => {
-      if (user.username === inputUserName) {
-        console.log("YEEES!");
-        if (user.password === inputPassword) {
-          console.log("Correct password aswell");
+    for (let i = 0; i < users.length; i++) {
+      if (users[i].username === inputUserName) {
+        if (users[i].password === inputPassword) {
+          setAnswer("Succesfully logged in");
           setLogin(true);
-          //TODO CREATE A HANDLER SO THAT WHEN LOGGED IN NEVER GO HERE GO TO PROFILE INSTEAD
         } else {
-          console.log("Wrong Password");
+          setAnswer("Wrong password to the connected userName");
           setLogin(false);
-          //TODO SHOW THIS AS A LABEL
         }
+        break;
       } else {
-        console.log("NOOO");
+        setAnswer("No user found with thoose credentials");
         setLogin(false);
-        // TODO SHOW THIS AS A LABEL
       }
-    });
+    }
 
     console.log(login);
   };
   return (
     <div className="main-container">
       <Hero header="Login" />
-      <form className={formstyles.formstyle}>
+      <form className={formstyles.formstyle} onSubmit={handleSubmit}>
         <div className={formstyles.formcontainer}>
           <label className={formstyles.formlabel} for="username">
             Username
@@ -66,6 +64,11 @@ function Login() {
           <button className={formstyles.contentbutton} type="submit">
             Login
           </button>
+
+          <div style={{ marginTop: "16px" }}>
+            <p style={{ fontSize: "18px", paddingLeft: "8px" }}>{answer}</p>
+          </div>
+
           <div className={formstyles.buttoncontainer}>
             <button
               className={formstyles.contentbutton}
