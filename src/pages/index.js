@@ -10,9 +10,6 @@ export default function Home() {
   const [textInput, setTextInput] = useState("");
   const [filteredProducts, setfilteredProducts] = useState([]);
 
-  const [addToCart, setAddToCart] = useState([]);
-  const [favourites, setFavourites] = useState([]);
-
   const fetchData = () => {
     fetch("/Data/food.json")
       .then((res) => res.json())
