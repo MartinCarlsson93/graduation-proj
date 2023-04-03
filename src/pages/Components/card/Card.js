@@ -1,101 +1,65 @@
 import React, { useState } from "react";
-import Hero from "../../Components/hero/Hero";
-//import "./Cart.css";
+import Image from "next/image";
+import styles from "./Card.module.css";
+import plus from "../../../../public/Assets/svgs/Add.svg";
+import minus from "../../../../public/Assets/svgs/Remove.svg";
+import favourites from "../../../../public/Assets/svgs/Favourites.svg";
+import campain from "../../../../public/Assets/svgs/Campain.svg";
 
-// You can replace this with data fetched from your API
-const sampleData = [
-  { id: 1, name: "Item 1", price: 10 },
-  { id: 2, name: "Item 2", price: 20 },
-  { id: 3, name: "Item 3", price: 30 },
-];
+const Card = ({ name, description, image }) => {
+  const [quantity, setQuantity] = useState(0);
+  const [isFavourite, setIsFavourite] = useState([]);
+  const [addCart, setAddCart] = useState([]);
 
-function Cart() {
-  const [cartItems, setCartItems] = useState([]);
+  const addToCart = () => {
+    console.log(`Adding ${quantity} of ${name} to cart`);
+  };
 
-  const addItem = (item) => {
-    const existingItem = cartItems.find((cartItem) => cartItem.id === item.id);
-    if (existingItem) {
-      updateItemQuantity(item.id, existingItem.quantity + 1);
-    } else {
-      setCartItems([...cartItems, { ...item, quantity: 1 }]);
+  const incrementQuantity = () => {
+    setQuantity((prevQuantity) => prevQuantity + 1);
+  };
+
+  const decrementQuantity = () => {
+    if (quantity > 0) {
+      setQuantity((prevQuantity) => prevQuantity - 1);
     }
   };
 
-  const updateItemQuantity = (id, quantity) => {
-    if (quantity <= 0) {
-      removeItem(id);
-    } else {
-      const updatedCartItems = cartItems.map((item) =>
-        item.id === id ? { ...item, quantity } : item
-      );
-      setCartItems(updatedCartItems);
-    }
-  };
-
-  const removeItem = (id) => {
-    const updatedCartItems = cartItems.filter((item) => item.id !== id);
-    setCartItems(updatedCartItems);
-  };
-
   return (
-    <div className="main-container">
-      <Hero header="Cart" />
-      {cartItems.length === 0 ? (
-        <p>No items in the cart.</p>
-      ) : (
-        <div className="cart-items">
-          {cartItems.map((item) => (
-            <CartItem
-              key={item.id}
-              item={item}
-              updateItemQuantity={updateItemQuantity}
-              removeItem={removeItem}
-            />
-          ))}
+    <div className={styles.card}>
+      <div className={styles.icons}>
+        <Image src={favourites} alt="favourites" width={30} height={30} />
+        <Image src={campain} alt="campain" width={30} height={30} />
+      </div>
+      <div className={styles.imageContainer}>
+        <img src={image} alt={name} className={styles.image} />
+      </div>
+      <div className={styles.content}>
+        <h3>{name}</h3>
+        <p style={{ height: "80px" }}>{description}</p>
+        <div className={styles.quantity}>
+          <Image
+            src={minus}
+            alt="minus"
+            width={30}
+            height={30}
+            onClick={decrementQuantity}
+          />
+          <span className={styles.quantityValue}>{quantity}</span>
+          <Image
+            src={plus}
+            alt="plus"
+            width={30}
+            height={30}
+            onClick={incrementQuantity}
+          />
         </div>
-      )}
-      <button onClick={() => addItem(sampleData[0])}>+</button>
-      <button onClick={() => addItem(sampleData[1])}>-</button>
-      <button onClick={() => addItem(sampleData[2])}>Remove item</button>
-      <button onClick={() => console.log("Implement Stripe checkout")}>
-        Checkout
-      </button>
-    </div>
-  );
-}
-
-function CartItem({ item, updateItemQuantity, removeItem }) {
-  return (
-    <div className="cart-item">
-      <div className="card">
-        <div className="card-body">
-          <h5 className="card-title">{item.name}</h5>
-          <p className="card-text">Price: ${item.price}</p>
-          <div className="buttons">
-            <button
-              className="btn btn-primary"
-              onClick={() => updateItemQuantity(item.id, item.quantity - 1)}
-            >
-              -
-            </button>
-            <span className="quantity">{item.quantity}</span>
-            <button
-              className="btn btn-primary"
-              onClick={() => updateItemQuantity(item.id, item.quantity + 1)}
-            >
-              +
-            </button>
-            <button
-              className="btn btn-danger"
-              onClick={() => removeItem(item.id)}
-            >
-              Delete
-            </button>
-          </div>
-        </div>
+        <button className={styles.addToCartButton} onClick={addToCart}>
+          Add to cart
+        </button>
       </div>
     </div>
   );
-}
+};
 
-export default Cart;
+export default Card;

@@ -1,15 +1,12 @@
 import React, { useState } from "react";
 import Hero from "./Components/hero/Hero";
-
-// You can replace this with data fetched from your API
-const sampleData = [
-  { id: 1, name: "Item 1", price: 10 },
-  { id: 2, name: "Item 2", price: 20 },
-  { id: 3, name: "Item 3", price: 30 },
-];
+import styles from "../styles/cart.module.css";
+import Card from "./Components/card/Card.js";
+import { useRouter } from "next/router";
 
 function Cart() {
   const [cartItems, setCartItems] = useState([]);
+  const router = useRouter();
 
   const addItem = (item) => {
     const existingItem = cartItems.find((cartItem) => cartItem.id === item.id);
@@ -19,6 +16,17 @@ function Cart() {
       setCartItems([...cartItems, { ...item, quantity: 1 }]);
     }
   };
+  function CartItem({ item, updateItemQuantity, removeItem }) {
+    return (
+      <div className="cart-item">
+        <Card
+          name={item.name}
+          description={`Price: $${item.price}`}
+          image={null}
+        />
+      </div>
+    );
+  }
 
   const updateItemQuantity = (id, quantity) => {
     if (quantity <= 0) {
@@ -36,10 +44,22 @@ function Cart() {
     setCartItems(updatedCartItems);
   };
 
+  const calculateTotal = () => {
+    return cartItems.reduce(
+      (total, item) => total + item.price * item.quantity,
+      0
+    );
+  };
+
+  const handleCheckout = () => {
+    console.log("Implement Stripe checkout");
+    router.push("/checkout");
+  };
+
   return (
-    <div className="main-container">
+    <div className={styles.mainContainer}>
       <Hero header="Cart" />
-      <div className="cart-items">
+      <div className={styles.cartItems}>
         {cartItems.map((item) => (
           <CartItem
             key={item.id}
@@ -49,29 +69,12 @@ function Cart() {
           />
         ))}
       </div>
-      <button onClick={() => addItem(sampleData[0])}>Add Item 1</button>
-      <button onClick={() => addItem(sampleData[1])}>Add Item 2</button>
-      <button onClick={() => addItem(sampleData[2])}>Add Item 3</button>
-      <button onClick={() => console.log("Implement Stripe checkout")}>
-        Checkout
-      </button>
-    </div>
-  );
-}
-
-function CartItem({ item, updateItemQuantity, removeItem }) {
-  return (
-    <div className="cart-item">
-      <h3>{item.name}</h3>
-      <p>Price: ${item.price}</p>
-      <button onClick={() => updateItemQuantity(item.id, item.quantity - 1)}>
-        -
-      </button>
-      <span>{item.quantity}</span>
-      <button onClick={() => updateItemQuantity(item.id, item.quantity + 1)}>
-        +
-      </button>
-      <button onClick={() => removeItem(item.id)}>Delete</button>
+      <div>
+        <span>Total: ${calculateTotal()}</span>
+      </div>
+      <div className={styles.checkout}>
+        <button onClick={handleCheckout}>Checkout</button>
+      </div>
     </div>
   );
 }
