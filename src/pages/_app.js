@@ -1,6 +1,7 @@
 import "@/styles/globals.css";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
+import { useState, useEffect } from "react";
 
 // import { Rubik } from "next/font/google";
 
@@ -10,10 +11,12 @@ import Footer from "./Components/Footer";
 // });
 
 export default function App({ Component, pageProps }) {
+  const [loggedIn, setLoggedIn] = useState(false);
+  const logIn = () => setLoggedIn(true);
   return (
     <main>
       <Header />
-      <Component {...pageProps} />
+      <Component {...pageProps} loggedIn={loggedIn} logIn={logIn} />
       <Footer />
     </main>
   );
