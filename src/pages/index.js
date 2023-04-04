@@ -4,21 +4,23 @@ import styles from "@/styles/Home.module.css";
 import Card from "./Components/card/Card";
 import search from "../../public/Assets/svgs/Search.svg";
 import { useState, useEffect } from "react";
+import Modal from "./Components/modal/Modal";
+import styles from "@/styles/modal.css";
+
 
 export default function Home() {
   const [products, setProducts] = useState([]);
   const [textInput, setTextInput] = useState("");
-  const [filteredProducts, setfilteredProducts] = useState([]);
-
-  const [addToCart, setAddToCart] = useState([]);
-  const [favourites, setFavourites] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const fetchData = () => {
     fetch("/Data/food.json")
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
-        setfilteredProducts(data);
+        setFilteredProducts(data);
       })
       .catch((error) => {
         console.log(error);
@@ -33,14 +35,24 @@ export default function Home() {
 
   useEffect(() => {
     if (textInput) {
-      const filtered = filteredProducts.filter((product) => {
+      const filtered = products.filter((product) => {
         return product.title.toLowerCase().includes(textInput.toLowerCase());
       });
-      setfilteredProducts(filtered);
+      setFilteredProducts(filtered);
     } else {
-      setfilteredProducts(products);
+      setFilteredProducts(products);
     }
   }, [textInput]);
+
+  const handleCardClick = (product) => {
+    setSelectedProduct(product);
+    setIsModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setSelectedProduct(null);
+    setIsModalOpen(false);
+  };
 
   return (
     <>
@@ -71,12 +83,16 @@ export default function Home() {
                   key={product.title}
                   name={product.title}
                   description={product.description}
-                  image={`/Assets/images/${product.filename}`} // assuming the images are in the Assets/images directory
+                  image={`/Assets/images/${product.filename}`}
+                  onClick={() => handleCardClick(product)}
                 />
               ))}
             </div>
           </div>
         </div>
+        {isModalOpen && (
+          <Modal product={selectedProduct} closeModal={handleModalClose} />
+        )}
       </main>
     </>
   );
