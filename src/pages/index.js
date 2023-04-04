@@ -4,14 +4,13 @@ import styles from "@/styles/Home.module.css";
 import Card from "./Components/card/Card";
 import search from "../../public/Assets/svgs/Search.svg";
 import { useState, useEffect } from "react";
+import { useCart } from "../pages/context/cartProvider.js";
 
 export default function Home() {
   const [products, setProducts] = useState([]);
   const [textInput, setTextInput] = useState("");
   const [filteredProducts, setfilteredProducts] = useState([]);
-
-  const [addToCart, setAddToCart] = useState([]);
-  const [favourites, setFavourites] = useState([]);
+  const { cartItems, addToCart, removeFromCart } = useCart();
 
   const fetchData = () => {
     fetch("/Data/food.json")
@@ -71,7 +70,9 @@ export default function Home() {
                   key={product.title}
                   name={product.title}
                   description={product.description}
-                  image={`/Assets/images/${product.filename}`} // assuming the images are in the Assets/images directory
+                  image={`/Assets/images/${product.filename}`}
+                  price={product.price}
+                  onAddToCart={(item) => addToCart(item)}
                 />
               ))}
             </div>
