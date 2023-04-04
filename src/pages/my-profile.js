@@ -4,7 +4,7 @@ import Image from "next/image";
 import Hero from "./Components/hero/Hero";
 import formstyles from "../styles/form.module.css";
 
-function MyProfile({ loggedIn, logIn, logOut }) {
+function MyProfile({ loggedIn, logOut }) {
   const [person, setPerson] = useState(null);
   const router = useRouter();
 
@@ -22,9 +22,7 @@ function MyProfile({ loggedIn, logIn, logOut }) {
   }, []);
 
   const handleLogout = () => {
-    logOut(false);
-    console.log(loggedIn);
-    // router.push("/login");
+    logOut();
   };
 
   const renderProfile = (person) => {
@@ -81,30 +79,5 @@ function MyProfile({ loggedIn, logIn, logOut }) {
     </div>
   );
 }
-
-// import { useState, useEffect, useCallback } from "react";
-// function MyProfile({ loggedIn, logIn }) {
-//   const router = useRouter();
-
-//   console.log(loggedIn);
-
-//   let users = require("../../public/Data/person.json");
-
-//   useEffect(() => {
-//     if (loggedIn === false) {
-//       router.push("/login");
-//     }
-//   }),
-//     [loggedIn];
-
-//   return (
-//     // TODO SET A HANDLER THAT COMES HERE IF LOGGED IN, OTHERWISE GO TO LOGIN PAGE
-//     <div className="main-container">
-//       <Hero header="My profile" />
-//       <p>rederecting...</p>
-//       <p>Du är inloggad nu</p>
-//     </div>
-//   );
-// }
 
 export default MyProfile;
