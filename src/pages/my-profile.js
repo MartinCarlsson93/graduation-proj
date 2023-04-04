@@ -18,7 +18,6 @@ function MyProfile({ loggedIn, logIn }) {
     [loggedIn];
 
   return (
-    // TODO SET A HANDLER THAT COMES HERE IF LOGGED IN, OTHERWISE GO TO LOGIN PAGE
     <div className="main-container">
       <Hero header="My profile" />
       <p>rederecting...</p>
