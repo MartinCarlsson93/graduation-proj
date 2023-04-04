@@ -41,14 +41,28 @@ function AboutUs() {
       </div>
 
       <div className={aboutStyles.flexContainer}>
+        <div className={aboutStyles.imageContainer}></div>
+      </div>
+
+      <div className={aboutStyles.flexContainer}>
         <div className={aboutStyles.imageContainer}>
           <img
+            src="/about.together.avif"
             src="/about.together.avif"
             alt="Image 2"
             className={aboutStyles.image}
           />
         </div>
         <div className={aboutStyles.paragraphContainer}>
+          <h2>Ethically produced and sustainability in mind</h2>
+          <p>
+            In addition to offering a diverse range of organic and sustainable
+            products, we also prioritize reducing waste and minimizing our
+            environmental footprint. From our commitment to using eco-friendly
+            packaging and supporting zero-waste initiatives to our efforts to
+            reduce energy consumption within our store, we continuously strive
+            to make a positive impact on our planet.
+          </p>
           <p>
             In addition to offering a diverse range of organic and sustainable
             products, we also prioritize reducing waste and minimizing our

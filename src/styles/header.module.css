@@ -78,6 +78,9 @@
   .hamburgermenu {
     display: none;
   }
+  .dropdown {
+    display: none;
+  }
 }
 
 /* Desktop */
@@ -86,6 +89,9 @@
     display: block;
   }
   .hamburgermenu {
+    display: none;
+  }
+  .dropdown {
     display: none;
   }
 }

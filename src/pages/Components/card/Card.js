@@ -38,8 +38,6 @@ const Card = ({ name, description, image, price, onAddToCart }) => {
     }
   };
 
-  console.log(items);
-
   return (
     <div className={styles.card}>
       <div className={styles.icons}>
@@ -56,7 +54,7 @@ const Card = ({ name, description, image, price, onAddToCart }) => {
         <img src={image} alt={name} className={styles.image} />
       </div>
       <div className={styles.content}>
-        <h3>{name}</h3>
+        <h4>{name}</h4>
         <p style={{ height: "80px" }}>{description}</p>
         <p>Price: ${price}</p>
         <div className={styles.quantity}>

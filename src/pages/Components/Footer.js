@@ -10,9 +10,9 @@ function Footer() {
           <div className={styles.footercontact}>
             <h3>Contact Us</h3>
             <ul>
-              <li>info@foodapp.com</li>
-              <li>+1-XXX-XXX-XXXX</li>
-              <li>123 Main Street, Suite 100, Anytown USA</li>
+              <li>info@Grocify.com</li>
+              <li>+46 770-555 555</li>
+              <li>123 Main Street, Suite 100, Solna Sweden</li>
             </ul>
           </div>
           <div className={styles.footersocial}>
@@ -54,7 +54,7 @@ function Footer() {
           </div>
         </div>
         <div className={styles.footerbottom}>
-          <p>&copy; 2023 Food App | All Rights Reserved</p>
+          <p>&copy; 2023 Grocify App | All Rights Reserved</p>
         </div>
       </div>
     </footer>
