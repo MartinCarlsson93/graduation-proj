@@ -12,8 +12,7 @@ function MyProfile({ loggedIn, logOut }) {
     if (loggedIn === false) {
       router.push("/login");
     }
-  }),
-    [loggedIn];
+  }), [loggedIn];
 
   useEffect(() => {
     fetch("../data/person.json")
@@ -29,42 +28,30 @@ function MyProfile({ loggedIn, logOut }) {
     return (
       <div className={profilestyles.profile}>
         <div className={profilestyles.profileHeader}>
-          <h2
-            className={profilestyles.profileHeading}
-          >{`${person.firstname} ${person.lastname}`}</h2>
+          <h2 className={profilestyles.profileHeading}>{`${person.firstname} ${person.lastname}`}</h2>
           <button className={profilestyles.logoutButton} onClick={handleLogout}>
             Logga ut
           </button>
         </div>
         <div className={profilestyles.profileContent}>
           <div className={profilestyles.roundProfileImage}>
-            <Image
-              src="/Assets/images/0.jpg"
-              alt="Profile Image"
-              width={200}
-              height={200}
-            />
+            <Image src="/Assets/images/0.jpg" alt="Profile Image" width={200} height={200} />
           </div>
           <div className={profilestyles.profileInfo}>
             <p>
-              <strong>Användarnamn: </strong>
-              {person.username}
+              <strong>Användarnamn:</strong> {person.username}
             </p>
             <p>
-              <strong>Email: </strong>
-              {person.email}
+              <strong>Email:</strong> {person.email}
             </p>
             <p>
-              <strong>Födelsedag: </strong>
-              {person.birthday}
+              <strong>Födelsedag:</strong> {person.birthday}
             </p>
             <p>
-              <strong>Förnamn: </strong>
-              {person.firstname}
+              <strong>Förnamn:</strong> {person.firstname}
             </p>
             <p>
-              <strong>Efternamn: </strong>
-              {person.lastname}
+              <strong>Efternamn:</strong> {person.lastname}
             </p>
           </div>
         </div>
