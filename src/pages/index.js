@@ -3,8 +3,7 @@ import Image from "next/image";
 import styles from "@/styles/Home.module.css";
 import Card from "./Components/card/Card";
 import search from "../../public/Assets/svgs/Search.svg";
-import { useState, useEffect, useCallback } from "react";
-
+import { useState, useEffect } from "react";
 
 export default function Home() {
   const [products, setProducts] = useState([]);
@@ -25,7 +24,6 @@ export default function Home() {
         console.log(error);
       });
   };
-  
 
   useEffect(fetchData, []);
 
@@ -43,8 +41,6 @@ export default function Home() {
       setfilteredProducts(products);
     }
   }, [textInput]);
-
-  console.log(filteredProducts);
 
   return (
     <>
