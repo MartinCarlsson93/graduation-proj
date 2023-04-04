@@ -10,8 +10,6 @@ const rubik = Rubik({ subsets: ["latin"] });
 
 export default function App({ Component, pageProps }) {
   const [loggedIn, setLoggedIn] = useState(false);
-  const [addToCart, setAddToCart] = useState([]);
-  const [favourites, setFavourites] = useState([]);
 
   const logIn = () => setLoggedIn(true);
   return (
