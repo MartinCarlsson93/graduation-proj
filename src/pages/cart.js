@@ -1,47 +1,38 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import Hero from "./Components/hero/Hero";
 import styles from "../styles/cart.module.css";
 import Card from "./Components/card/Card.js";
 import { useRouter } from "next/router";
+import { FavouriteContext } from "../pages/context/favouriteContext.js";
+import { useCart } from "./context/cartProvider";
 
 function Cart() {
-  const [cartItems, setCartItems] = useState([]);
+  const { cartItems, addToCart, removeFromCart } = useCart();
+  const { favouriteCartItems } = useContext(FavouriteContext);
   const router = useRouter();
 
-  const addItem = (item) => {
-    const existingItem = cartItems.find((cartItem) => cartItem.id === item.id);
-    if (existingItem) {
-      updateItemQuantity(item.id, existingItem.quantity + 1);
-    } else {
-      setCartItems([...cartItems, { ...item, quantity: 1 }]);
-    }
-  };
   function CartItem({ item, updateItemQuantity, removeItem }) {
     return (
       <div className="cart-item">
         <Card
+          key={item.id}
           name={item.name}
           description={`Price: $${item.price}`}
-          image={null}
+          image={item.image}
         />
+        <div>
+          <span>Quantity: {item.quantity}</span>
+        </div>
       </div>
     );
   }
 
   const updateItemQuantity = (id, quantity) => {
     if (quantity <= 0) {
-      removeItem(id);
+      removeFromCart(id);
     } else {
-      const updatedCartItems = cartItems.map((item) =>
-        item.id === id ? { ...item, quantity } : item
-      );
-      setCartItems(updatedCartItems);
+      // Implement updateItemQuantity logic in cart context
     }
-  };
-
-  const removeItem = (id) => {
-    const updatedCartItems = cartItems.filter((item) => item.id !== id);
-    setCartItems(updatedCartItems);
   };
 
   const calculateTotal = () => {
@@ -60,20 +51,40 @@ function Cart() {
     <div className={styles.mainContainer}>
       <Hero header="Cart" />
       <div className={styles.cartItems}>
-        {cartItems.map((item) => (
-          <CartItem
-            key={item.id}
-            item={item}
-            updateItemQuantity={updateItemQuantity}
-            removeItem={removeItem}
-          />
-        ))}
+        {favouriteCartItems && Array.isArray(favouriteCartItems)
+          ? [...cartItems, ...favouriteCartItems].map((item) => (
+              <CartItem
+                key={item.id}
+                item={item}
+                updateItemQuantity={updateItemQuantity}
+                removeItem={removeFromCart}
+              />
+            ))
+          : cartItems.map((item) => (
+              <CartItem
+                key={item.id}
+                item={item}
+                updateItemQuantity={updateItemQuantity}
+                removeItem={removeFromCart}
+              />
+            ))}
       </div>
       <div>
-        <span>Total: ${calculateTotal()}</span>
+        <span>
+          <h3>Total: ${calculateTotal()}</h3>
+        </span>
       </div>
       <div className={styles.checkout}>
         <button onClick={handleCheckout}>Checkout</button>
+      </div>
+      <div>
+        <h3>Favourite items:</h3>
+        <ul>
+          {favouriteCartItems &&
+            favouriteCartItems.map((item, index) => (
+              <li key={index}>{item.name}</li>
+            ))}
+        </ul>
       </div>
     </div>
   );

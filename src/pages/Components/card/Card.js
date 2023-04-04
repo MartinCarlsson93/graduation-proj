@@ -7,14 +7,15 @@ import favourites from "../../../../public/Assets/svgs/Favourites.svg";
 import campain from "../../../../public/Assets/svgs/Campain.svg";
 import { FavouriteContext } from "@/pages/context/favouriteContext";
 
-const Card = ({ name, description, image }) => {
+const Card = ({ name, description, image, price, onAddToCart }) => {
   const [quantity, setQuantity] = useState(0);
   const { items, addToFavourites } = useContext(FavouriteContext);
 
   const addToCart = () => {
-    console.log(`Adding ${quantity} of ${name} to cart`);
+    if (onAddToCart) {
+      onAddToCart({ name, description, image });
+    }
   };
-
   const incrementQuantity = () => {
     setQuantity((prevQuantity) => prevQuantity + 1);
   };
@@ -30,6 +31,7 @@ const Card = ({ name, description, image }) => {
       name: name,
       description: description,
       image: image,
+      price: price,
     };
     if (!items.includes(item.name)) {
       addToFavourites(item);
@@ -56,6 +58,7 @@ const Card = ({ name, description, image }) => {
       <div className={styles.content}>
         <h3>{name}</h3>
         <p style={{ height: "80px" }}>{description}</p>
+        <p>Price: ${price}</p>
         <div className={styles.quantity}>
           <Image
             src={minus}
@@ -73,7 +76,12 @@ const Card = ({ name, description, image }) => {
             onClick={incrementQuantity}
           />
         </div>
-        <button className={styles.addToCartButton} onClick={addToCart}>
+        <button
+          className={styles.addToCartButton}
+          onClick={() => {
+            onAddToCart({ name, description, image, price, id: name });
+          }}
+        >
           Add to cart
         </button>
       </div>

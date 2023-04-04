@@ -3,6 +3,7 @@ import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import { useState, useEffect, createContext } from "react";
 import { FavouriteProvider } from "../pages/context/favouriteContext";
+import { CartProvider } from "../pages/context/cartProvider";
 
 // import { Rubik } from "next/font/google";
 
@@ -21,7 +22,9 @@ export default function App({ Component, pageProps }) {
     <main>
       <Header />
       <FavouriteProvider>
-        <Component {...pageProps} loggedIn={loggedIn} logIn={logIn} />
+        <CartProvider>
+          <Component {...pageProps} loggedIn={loggedIn} logIn={logIn} />
+        </CartProvider>
       </FavouriteProvider>
       <Footer />
     </main>
