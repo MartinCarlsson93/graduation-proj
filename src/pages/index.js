@@ -5,7 +5,6 @@ import Card from "./Components/card/Card";
 import search from "../../public/Assets/svgs/Search.svg";
 import { useState, useEffect } from "react";
 import Modal from "./Components/modal/Modal";
-import modalstyles from "../styles/modal.module.css";
 
 export default function Home() {
   const [products, setProducts] = useState([]);
@@ -44,6 +43,7 @@ export default function Home() {
   }, [textInput]);
 
   const handleCardClick = (product) => {
+    console.log("Hello");
     setSelectedProduct(product);
     setIsModalOpen(true);
   };
@@ -52,6 +52,8 @@ export default function Home() {
     setSelectedProduct(null);
     setIsModalOpen(false);
   };
+
+  console.log(selectedProduct);
 
   return (
     <>
@@ -78,13 +80,14 @@ export default function Home() {
           <div className={styles.content}>
             <div className={styles.grid}>
               {filteredProducts.map((product) => (
-                <Card
-                  key={product.title}
-                  name={product.title}
-                  description={product.description}
-                  image={`/Assets/images/${product.filename}`}
-                  onClick={() => handleCardClick(product)}
-                />
+                <div onClick={() => handleCardClick(product)}>
+                  <Card
+                    key={product.title}
+                    name={product.title}
+                    description={product.description}
+                    image={`/Assets/images/${product.filename}`}
+                  />
+                </div>
               ))}
             </div>
           </div>
