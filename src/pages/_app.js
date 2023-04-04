@@ -12,11 +12,17 @@ export default function App({ Component, pageProps }) {
   const [loggedIn, setLoggedIn] = useState(false);
 
   const logIn = () => setLoggedIn(true);
+  const logOut = () => setLoggedIn(false);
   return (
     <main className={rubik.className}>
       <Header />
       <FavouriteProvider>
-        <Component {...pageProps} loggedIn={loggedIn} logIn={logIn} />
+        <Component
+          {...pageProps}
+          loggedIn={loggedIn}
+          logIn={logIn}
+          logOut={logOut}
+        />
       </FavouriteProvider>
       <Footer />
     </main>
