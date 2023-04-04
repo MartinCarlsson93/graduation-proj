@@ -17,13 +17,14 @@ function Header() {
 
   return (
     <div className={styles.header}>
-      <a href="/">
+      <a>
         <Image
           className={styles.weblogo}
           src="/Web-logo.png"
           alt="Grocify-logo"
           width={240}
           height={100}
+          onClick={() => router.push("/")}
         />
       </a>
 

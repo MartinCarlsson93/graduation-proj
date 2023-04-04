@@ -1,10 +1,7 @@
 import React, { useContext, useState } from "react";
 import Image from "next/image";
 import styles from "./Card.module.css";
-import plus from "../../../../public/Assets/svgs/Add.svg";
-import minus from "../../../../public/Assets/svgs/Remove.svg";
 import favourites from "../../../../public/Assets/svgs/IsFavourite.svg";
-import campain from "../../../../public/Assets/svgs/Campain.svg";
 import { FavouriteContext } from "@/pages/context/favouriteContext";
 
 const Card = ({ name, description, image }) => {
@@ -16,15 +13,14 @@ const Card = ({ name, description, image }) => {
     console.log(`Adding of ${name} to cart`);
   };
 
-  const addFavourite = () => {
+  const removeFavourite = () => {
     const item = {
-      id: items.length + 1,
       name: name,
       description: description,
       image: image,
     };
 
-    addToFavourites(item);
+    removeFromFavourites(item.id);
   };
 
   console.log(items);
@@ -37,14 +33,14 @@ const Card = ({ name, description, image }) => {
           alt="favourites"
           width={30}
           height={30}
-          onClick={addFavourite}
+          onClick={removeFavourite}
         />
       </div>
       <div className={styles.imageContainer}>
         <img src={image} alt={name} className={styles.image} />
       </div>
       <div className={styles.content}>
-        <h3>{name}</h3>
+        <h4>{name}</h4>
         <p style={{ height: "80px" }}>{description}</p>
         <button className={styles.addToCartButton} onClick={addToCart}>
           Add to cart
