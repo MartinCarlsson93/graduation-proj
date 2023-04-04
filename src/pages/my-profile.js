@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Hero from "./Components/hero/Hero";
-import formstyles from "../styles/form.module.css";
+import profilestyles from "../styles/profile.module.css";
 
 function MyProfile({ loggedIn, logOut }) {
   const [person, setPerson] = useState(null);
@@ -27,17 +27,17 @@ function MyProfile({ loggedIn, logOut }) {
 
   const renderProfile = (person) => {
     return (
-      <div className={formstyles.profile}>
-        <div className={formstyles.profileHeader}>
+      <div className={profilestyles.profile}>
+        <div className={profilestyles.profileHeader}>
           <h2
-            className={formstyles.profileHeading}
+            className={profilestyles.profileHeading}
           >{`${person.firstname} ${person.lastname}`}</h2>
-          <button className={formstyles.logoutButton} onClick={handleLogout}>
+          <button className={profilestyles.logoutButton} onClick={handleLogout}>
             Logga ut
           </button>
         </div>
-        <div className={formstyles.profileContent}>
-          <div className={formstyles.roundProfileImage}>
+        <div className={profilestyles.profileContent}>
+          <div className={profilestyles.roundProfileImage}>
             <Image
               src="/Assets/images/0.jpg"
               alt="Profile Image"
@@ -45,7 +45,7 @@ function MyProfile({ loggedIn, logOut }) {
               height={200}
             />
           </div>
-          <div className={formstyles.profileInfo}>
+          <div className={profilestyles.profileInfo}>
             <p>
               <strong>Användarnamn: </strong>
               {person.username}
@@ -73,7 +73,7 @@ function MyProfile({ loggedIn, logOut }) {
   };
 
   return (
-    <div className={formstyles.container}>
+    <div className={profilestyles.container}>
       <Hero header="Min profil" />
       {loggedIn && person ? renderProfile(person) : "redirecting..."}
     </div>
