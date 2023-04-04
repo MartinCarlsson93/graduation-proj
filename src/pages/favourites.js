@@ -15,6 +15,8 @@ function Favourite() {
 
   useEffect(fetchData, []);
 
+  console.log(items);
+
   return (
     <div className="main-container">
       <main className="main-container">
@@ -25,7 +27,7 @@ function Favourite() {
               {products.map((product) => (
                 <FavouriteCard
                   key={product.id}
-                  name={product.title}
+                  name={product.name}
                   description={product.description}
                   image={product.image}
                 />
