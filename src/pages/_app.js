@@ -17,11 +17,17 @@ export default function App({ Component, pageProps }) {
   const [favourites, setFavourites] = useState([]);
 
   const logIn = () => setLoggedIn(true);
+  const logOut = () => setLoggedIn(false);
   return (
     <main>
       <Header />
       <FavouriteProvider>
-        <Component {...pageProps} loggedIn={loggedIn} logIn={logIn} />
+        <Component
+          {...pageProps}
+          loggedIn={loggedIn}
+          logIn={logIn}
+          logOut={logOut}
+        />
       </FavouriteProvider>
       <Footer />
     </main>
