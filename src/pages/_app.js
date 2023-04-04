@@ -1,6 +1,8 @@
 import "@/styles/globals.css";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
+import { useState, useEffect, createContext } from "react";
+import { FavouriteProvider } from "../pages/context/favouriteContext";
 
 // import { Rubik } from "next/font/google";
 
@@ -10,10 +12,23 @@ import Footer from "./Components/Footer";
 // });
 
 export default function App({ Component, pageProps }) {
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [addToCart, setAddToCart] = useState([]);
+  const [favourites, setFavourites] = useState([]);
+
+  const logIn = () => setLoggedIn(true);
+  const logOut = () => setLoggedIn(false);
   return (
     <main>
       <Header />
-      <Component {...pageProps} />
+      <FavouriteProvider>
+        <Component
+          {...pageProps}
+          loggedIn={loggedIn}
+          logIn={logIn}
+          logOut={logOut}
+        />
+      </FavouriteProvider>
       <Footer />
     </main>
   );
