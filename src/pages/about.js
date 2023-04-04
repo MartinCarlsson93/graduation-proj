@@ -48,7 +48,6 @@ function AboutUs() {
         <div className={aboutStyles.imageContainer}>
           <img
             src="/about.together.avif"
-            src="/about.together.avif"
             alt="Image 2"
             className={aboutStyles.image}
           />
