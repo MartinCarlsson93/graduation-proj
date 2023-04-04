@@ -53,8 +53,6 @@ export default function Home() {
     setIsModalOpen(false);
   };
 
-  console.log(selectedProduct);
-
   return (
     <>
       <Head>
