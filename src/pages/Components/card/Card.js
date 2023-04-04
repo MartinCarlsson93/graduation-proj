@@ -7,13 +7,27 @@ import favourites from "../../../../public/Assets/svgs/Favourites.svg";
 import campain from "../../../../public/Assets/svgs/Campain.svg";
 import { FavouriteContext } from "@/pages/context/favouriteContext";
 
-const Card = ({ name, description, image, price, onAddToCart }) => {
+const Card = ({
+  name,
+  description,
+  image,
+  price,
+  onAddToCart,
+  onRemoveFromCart,
+}) => {
   const [quantity, setQuantity] = useState(0);
   const { items, addToFavourites } = useContext(FavouriteContext);
 
   const addToCart = () => {
     if (onAddToCart) {
-      onAddToCart({ name, description, image });
+      onAddToCart({
+        name,
+        description,
+        image,
+        price,
+        id: name,
+        quantity: parseInt(quantity),
+      });
     }
   };
   const incrementQuantity = () => {
@@ -77,10 +91,19 @@ const Card = ({ name, description, image, price, onAddToCart }) => {
         <button
           className={styles.addToCartButton}
           onClick={() => {
+            addToCart;
             onAddToCart({ name, description, image, price, id: name });
           }}
         >
           Add to cart
+        </button>
+        <button
+          className={styles.removeFromCartButton}
+          onClick={() => {
+            onRemoveFromCart({ id: name });
+          }}
+        >
+          Remove from cart
         </button>
       </div>
     </div>

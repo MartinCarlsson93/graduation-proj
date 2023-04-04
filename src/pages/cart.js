@@ -7,7 +7,8 @@ import { FavouriteContext } from "../pages/context/favouriteContext.js";
 import { useCart } from "./context/cartProvider";
 
 function Cart() {
-  const { cartItems, addToCart, removeFromCart } = useCart();
+  const { cartItems, addToCart, removeFromCart, updateItemQuantity } =
+    useCart();
   const { favouriteCartItems } = useContext(FavouriteContext);
   const router = useRouter();
 
@@ -19,6 +20,9 @@ function Cart() {
           name={item.name}
           description={`Price: $${item.price}`}
           image={item.image}
+          price={item.price}
+          onAddToCart={(item) => addToCart(item)}
+          onRemoveFromCart={(item) => removeFromCart(item)}
         />
         <div>
           <span>Quantity: {item.quantity}</span>
@@ -27,11 +31,11 @@ function Cart() {
     );
   }
 
-  const updateItemQuantity = (id, quantity) => {
+  const handleUpdateItemQuantity = (id, quantity) => {
     if (quantity <= 0) {
       removeFromCart(id);
     } else {
-      // Implement updateItemQuantity logic in cart context
+      updateItemQuantity(id, quantity);
     }
   };
 
@@ -64,7 +68,7 @@ function Cart() {
               <CartItem
                 key={item.id}
                 item={item}
-                updateItemQuantity={updateItemQuantity}
+                handleUpdateItemQuantity={handleUpdateItemQuantity}
                 removeItem={removeFromCart}
               />
             ))}
