@@ -24,6 +24,7 @@ const Card = ({ name, description, image }) => {
   };
 
   console.log(items);
+  console.log(items[0]);
 
   return (
     <div className={styles.card}>
@@ -37,7 +38,12 @@ const Card = ({ name, description, image }) => {
         />
       </div>
       <div className={styles.imageContainer}>
-        <img src={image} alt={name} className={styles.image} />
+        <Image
+          src={`/../public/Assets/images/${image}`}
+          alt={name}
+          width={150}
+          height={200}
+        />
       </div>
       <div className={styles.content}>
         <h4>{name}</h4>

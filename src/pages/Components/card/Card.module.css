@@ -38,3 +38,14 @@
   font-size: 1rem;
   text-align: center;
 }
+.addToCartButton {
+  display: block;
+  margin: 0 auto;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  background-color: #f86f44;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}

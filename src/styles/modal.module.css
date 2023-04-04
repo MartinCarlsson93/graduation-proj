@@ -29,25 +29,11 @@
   margin-bottom: 10px;
 }
 
-.modalContent button:hover {
-  background-color: #c0c0c0;
-}
-
 .quantity {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 0.5rem;
-}
-
-.quantityButton {
-  padding: 0.25rem;
-  margin: 0 0.5rem;
-  font-size: 1.5rem;
-  background-color: #ccc;
-  border: none;
-  border-radius: 0.5rem;
-  cursor: pointer;
 }
 
 .quantityValue {
@@ -62,7 +48,13 @@
   color: #fff;
   border: none;
   border-radius: 0.5rem;
-  cursor: pointer;
+}
+
+.icons {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .addToCartButton {
@@ -75,4 +67,18 @@
   border: none;
   border-radius: 0.5rem;
   cursor: pointer;
+  border: white 1px solid;
+}
+
+.addToCartButton:hover {
+  display: block;
+  margin: 0 auto;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  background-color: white;
+  color: #f86f44;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  border: #f86f44 1px solid;
 }
