@@ -36,8 +36,6 @@ const Card = ({ name, description, image }) => {
     }
   };
 
-  console.log(items);
-
   return (
     <div className={styles.card}>
       <div className={styles.icons}>
