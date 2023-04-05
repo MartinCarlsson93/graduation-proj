@@ -28,6 +28,7 @@ const Card = ({
         id: name,
         quantity: parseInt(quantity),
       });
+      setQuantity(0);
     }
   };
   const incrementQuantity = () => {

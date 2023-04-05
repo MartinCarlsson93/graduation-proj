@@ -75,7 +75,7 @@ function Cart() {
       </div>
       <div>
         <span>
-          <h3>Total: ${calculateTotal()}</h3>
+          <h3>Total amount: ${calculateTotal()}</h3>
         </span>
       </div>
       <div className={styles.checkout}>
