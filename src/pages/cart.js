@@ -47,7 +47,6 @@ function Cart() {
   };
 
   const handleCheckout = () => {
-    console.log("Implement Stripe checkout");
     router.push("/checkout");
   };
 
@@ -80,15 +79,6 @@ function Cart() {
       </div>
       <div className={styles.checkout}>
         <button onClick={handleCheckout}>Checkout</button>
-      </div>
-      <div>
-        <h3>Favourite items:</h3>
-        <ul>
-          {favouriteCartItems &&
-            favouriteCartItems.map((item, index) => (
-              <li key={index}>{item.name}</li>
-            ))}
-        </ul>
       </div>
     </div>
   );

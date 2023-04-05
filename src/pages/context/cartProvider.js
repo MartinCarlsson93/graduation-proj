@@ -7,16 +7,20 @@ const CartProvider = ({ children }) => {
 
   const addToCart = (item) => {
     setCartItems((prevCartItems) => {
-      const existingItemIndex = prevCartItems.findIndex(
+      const existingItem = prevCartItems.find(
         (cartItem) => cartItem.id === item.id
       );
-
-      if (existingItemIndex >= 0) {
-        const updatedCartItems = [...prevCartItems];
-        updatedCartItems[existingItemIndex].quantity += 1;
-        return updatedCartItems;
+      if (existingItem) {
+        return prevCartItems.map((cartItem) =>
+          cartItem.id === item.id
+            ? { ...cartItem, quantity: cartItem.quantity + item.quantity }
+            : cartItem
+        );
       } else {
-        return [...prevCartItems, { ...item, quantity: 1 }];
+        return [
+          ...prevCartItems,
+          { ...item, quantity: parseInt(item.quantity, 10) || 1 },
+        ];
       }
     });
   };
