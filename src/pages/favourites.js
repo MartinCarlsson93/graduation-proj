@@ -1,21 +1,11 @@
-import React from "react";
+import { useContext } from "react";
+import { FavouriteContext } from "@/pages/context/favouriteContext";
 import Hero from "./Components/hero/Hero";
 import styles from "@/styles/Home.module.css";
 import FavouriteCard from "./Components/card/FavourtieCard";
-import { FavouriteContext } from "@/pages/context/favouriteContext";
-import { useState, useEffect, useContext, useCallback } from "react";
 
 function Favourite() {
-  const { items } = useContext(FavouriteContext);
-  const [products, setProducts] = useState([]);
-
-  const fetchData = () => {
-    setProducts(items);
-  };
-
-  useEffect(fetchData, []);
-
-  console.log(items);
+  const { state } = useContext(FavouriteContext);
 
   return (
     <div className="main-container">
@@ -24,12 +14,12 @@ function Favourite() {
         <div>
           <div className={styles.content}>
             <div className={styles.grid}>
-              {products.map((product) => (
+              {state.items.map((item) => (
                 <FavouriteCard
-                  key={product.id}
-                  name={product.name}
-                  description={product.description}
-                  image={product.image}
+                  key={item.name}
+                  name={item.name}
+                  description={item.description}
+                  image={item.image}
                 />
               ))}
             </div>

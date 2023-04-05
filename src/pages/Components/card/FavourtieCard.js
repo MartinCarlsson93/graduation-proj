@@ -20,7 +20,7 @@ const Card = ({ name, description, image }) => {
       image: image,
     };
 
-    removeFromFavourites(item.id);
+    removeFromFavourites(name);
   };
 
   console.log(items);

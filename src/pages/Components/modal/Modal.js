@@ -6,23 +6,24 @@ import favourites from "../../../../public/Assets/svgs/Favourites.svg";
 import { FavouriteContext } from "@/pages/context/favouriteContext";
 import { useState, useContext } from "react";
 
-const Modal = ({ product, closeModal, name, description, image }) => {
+const Modal = ({ product, closeModal }) => {
   const [quantity, setQuantity] = useState(0);
-  const { items, addToFavourites } = useContext(FavouriteContext);
+  const { state, addToFavourites } = useContext(FavouriteContext);
 
   const addFavourite = () => {
     const item = {
+      id: product.id,
       name: product.title,
       description: product.description,
       image: product.filename,
     };
-    if (!items.includes(item.name)) {
+    if (!state.items.some((fav) => fav.id === item.id)) {
       addToFavourites(item);
     }
   };
 
   const addToCart = () => {
-    console.log(`Adding ${quantity} of ${name} to cart`);
+    console.log(`Adding ${quantity} of ${product.title} to cart`);
   };
 
   const incrementQuantity = () => {
