@@ -15,7 +15,7 @@ const Card = ({
   onAddToCart,
   onRemoveFromCart,
 }) => {
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
   const { items, addToFavourites } = useContext(FavouriteContext);
 
   const addToCart = () => {
@@ -26,9 +26,8 @@ const Card = ({
         image,
         price,
         id: name,
-        quantity: parseInt(quantity),
+        quantity: parseInt(quantity, 10),
       });
-      setQuantity(0);
     }
   };
   const incrementQuantity = () => {
@@ -89,13 +88,7 @@ const Card = ({
             onClick={incrementQuantity}
           />
         </div>
-        <button
-          className={styles.addToCartButton}
-          onClick={() => {
-            addToCart;
-            onAddToCart({ name, description, image, price, id: name });
-          }}
-        >
+        <button className={styles.addToCartButton} onClick={addToCart}>
           Add to cart
         </button>
         <button
