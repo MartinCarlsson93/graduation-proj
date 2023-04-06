@@ -5,7 +5,7 @@ import minus from "../../../../public/Assets/svgs/Remove.svg";
 import trash from "../../../../public/Assets/svgs/Delete.svg";
 import styles from "./Card.module.css";
 
-const CartCard = ({ name, quantity, image, price }) => {
+const CartCard = ({ name, quantity, image, price, onRemoveFromCart }) => {
   const incrementQuantity = () => {
     setQuantity((prevQuantity) => prevQuantity + 1);
   };
@@ -17,7 +17,9 @@ const CartCard = ({ name, quantity, image, price }) => {
   };
 
   const removeFromCart = () => {
-    console.log("Remove");
+    if (onRemoveFromCart) {
+      onRemoveFromCart();
+    }
   };
 
   return (
