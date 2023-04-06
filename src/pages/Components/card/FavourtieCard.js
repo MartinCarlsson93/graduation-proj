@@ -39,7 +39,7 @@ const Card = ({ name, description, image }) => {
       </div>
       <div className={styles.imageContainer}>
         <Image
-          src={`/../../../public/Assets/images/${image}`}
+          src={`/../../public/Assets/images/${image}`}
           alt={name}
           width={150}
           height={200}
