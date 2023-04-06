@@ -21,19 +21,19 @@ const Modal = ({
 
   const addFavourite = () => {
     const item = {
-      name: product.title,
-      description: product.description,
-      image: product.filename,
+      name: product?.title,
+      description: product?.description,
+      image: product?.filename,
     };
     if (!items.includes(item.name)) {
       addToFavourites(item);
     }
   };
 
-  name = product.title;
-  description = product.description;
-  image = `/Assets/images/${product.filename}`;
-  price = product.price;
+  name = product?.title;
+  description = product?.description;
+  image = `/Assets/images/${product?.filename}`;
+  price = product?.price;
 
   const addToCart = () => {
     if (onAddToCart) {
@@ -79,17 +79,17 @@ const Modal = ({
             style={{ cursor: "pointer" }}
           />
         </div>
-        <h2>{product.title}</h2>
+        <h2>{product?.title}</h2>
         <Image
-          src={`/Assets/images/${product.filename}`}
+          src={`/Assets/images/${product?.filename}`}
           alt="Hej"
           width={150}
           height={200}
         />
-        <p>Type: {product.type}</p>
-        <p>Description: {product.description}</p>
-        <p>Price: {product.price}</p>
-        <p>Rating: {product.rating}</p>
+        <p>Type: {product?.type}</p>
+        <p>Description: {product?.description}</p>
+        <p>Price: {product?.price}</p>
+        <p>Rating: {product?.rating}</p>
         <div className={styles.quantity}>
           <Image
             src={minus}
