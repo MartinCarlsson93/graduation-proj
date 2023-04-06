@@ -6,8 +6,17 @@ import favourites from "../../../../public/Assets/svgs/Favourites.svg";
 import { FavouriteContext } from "@/pages/context/favouriteContext";
 import { useState, useContext } from "react";
 
-const Modal = ({ product, closeModal, name, description, image }) => {
-  const [quantity, setQuantity] = useState(0);
+const Modal = ({
+  product,
+  closeModal,
+  name,
+  description,
+  image,
+  price,
+  onAddToCart,
+  onRemoveFromCart,
+}) => {
+  const [quantity, setQuantity] = useState(1);
   const { items, addToFavourites } = useContext(FavouriteContext);
 
   const addFavourite = () => {
@@ -21,8 +30,22 @@ const Modal = ({ product, closeModal, name, description, image }) => {
     }
   };
 
+  name = product.title;
+  description = product.description;
+  image = `/Assets/images/${product.filename}`;
+  price = product.price;
+
   const addToCart = () => {
-    console.log(`Adding ${quantity} of ${name} to cart`);
+    if (onAddToCart) {
+      onAddToCart({
+        name,
+        description,
+        image,
+        price,
+        id: name,
+        quantity: parseInt(quantity, 10),
+      });
+    }
   };
 
   const incrementQuantity = () => {
@@ -49,6 +72,7 @@ const Modal = ({ product, closeModal, name, description, image }) => {
           />
           <Image
             src={`/Assets/svgs/close.svg`}
+            alt="Hej"
             width={40}
             height={40}
             onClick={closeModal}
@@ -58,6 +82,7 @@ const Modal = ({ product, closeModal, name, description, image }) => {
         <h2>{product.title}</h2>
         <Image
           src={`/Assets/images/${product.filename}`}
+          alt="Hej"
           width={150}
           height={200}
         />
@@ -82,11 +107,16 @@ const Modal = ({ product, closeModal, name, description, image }) => {
             onClick={incrementQuantity}
           />
         </div>
-        <button
-          className={quantity >= 1 ? styles.addToCartButton : styles.cartButton}
-          onClick={addToCart}
-        >
+        <button className={styles.addToCartButton} onClick={addToCart}>
           Add to cart
+        </button>
+        <button
+          className={styles.removeFromCartButton}
+          onClick={() => {
+            onRemoveFromCart({ id: name });
+          }}
+        >
+          Remove from cart
         </button>
       </div>
     </div>
