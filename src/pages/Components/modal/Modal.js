@@ -19,21 +19,21 @@ const Modal = ({
   const [quantity, setQuantity] = useState(1);
   const { items, addToFavourites } = useContext(FavouriteContext);
 
+  name = product?.title;
+  description = product?.description;
+  image = `/Assets/images/${product?.filename}`;
+  price = product?.price;
+
   const addFavourite = () => {
     const item = {
-      name: product?.title,
-      description: product?.description,
-      image: product?.filename,
+      name,
+      description,
+      image,
     };
     if (!items.includes(item.name)) {
       addToFavourites(item);
     }
   };
-
-  name = product?.title;
-  description = product?.description;
-  image = `/Assets/images/${product?.filename}`;
-  price = product?.price;
 
   const addToCart = () => {
     if (onAddToCart) {
