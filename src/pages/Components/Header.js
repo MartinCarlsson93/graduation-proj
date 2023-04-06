@@ -3,6 +3,9 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import ShoppingCart from "../../../public/Assets/svgs/ShoppingCart.svg";
 import hamburgerMenu from "../../../public/Assets/svgs/hamburgerMenu.svg";
+import userCircle from "../../../public/Assets/svgs/userCircle.svg";
+import contactUs from "../../../public/Assets/svgs/contactUs.svg";
+import favourites from "../../../public/Assets/svgs/Favourites.svg";
 import styles from "../../styles/header.module.css";
 
 function Header() {
@@ -45,36 +48,21 @@ function Header() {
             className={styles.dropdownitem}
             onClick={() => router.push("/my-profile")}
           >
-            <Image
-              src="../../../assets/svgs/userCircle.svg"
-              alt="userCircle"
-              width={30}
-              height={30}
-            />
+            <Image src={userCircle} alt="userCircle" width={30} height={30} />
             <p>Login</p>
           </div>
           <div
             className={styles.dropdownitem}
             onClick={() => router.push("/contact")}
           >
-            <Image
-              src="/assets/svgs/contactUs.svg"
-              alt="Contact us"
-              width={30}
-              height={30}
-            />
+            <Image src={contactUs} alt="Contact us" width={30} height={30} />
             <p>Contact Us</p>
           </div>
           <div
             className={styles.dropdownitem}
             onClick={() => router.push("/favourites")}
           >
-            <Image
-              src="/assets/svgs/Favourites.svg"
-              alt="Favourite"
-              width={30}
-              height={30}
-            />
+            <Image src={favourites} alt="Favourite" width={30} height={30} />
             <p>Favourite</p>
           </div>
           <div
@@ -82,7 +70,7 @@ function Header() {
             onClick={() => router.push("/cart")}
           >
             <Image
-              src="/assets/svgs/ShoppingCart.svg"
+              src={ShoppingCart}
               alt="Shopping Cart"
               width={30}
               height={30}
@@ -96,7 +84,7 @@ function Header() {
         <ul>
           <li>
             <Image
-              src="/assets/svgs/userCircle.svg"
+              src={userCircle}
               alt="userCircle"
               width={30}
               height={30}
