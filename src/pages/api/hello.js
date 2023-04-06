@@ -3,9 +3,3 @@
 // export default function handler(req, res) {
 //   res.status(200).json({ name: 'John Doe' })
 // }
-
-import foodData from '../../Data/food.json';
-
-export default function handler(req, res) {
-  res.status(200).json(foodData);
-}
