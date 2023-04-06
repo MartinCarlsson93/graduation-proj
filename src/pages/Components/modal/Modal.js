@@ -110,14 +110,6 @@ const Modal = ({
         <button className={styles.addToCartButton} onClick={addToCart}>
           Add to cart
         </button>
-        <button
-          className={styles.removeFromCartButton}
-          onClick={() => {
-            onRemoveFromCart({ id: name });
-          }}
-        >
-          Remove from cart
-        </button>
       </div>
     </div>
   );

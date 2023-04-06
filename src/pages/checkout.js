@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useRouter } from "next/router";
 import styles from "../styles/checkout.module.css";
 
 export default function Checkout() {
@@ -13,49 +14,17 @@ export default function Checkout() {
   const [cvv, setCvv] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const handleSubmit = async (event) => {
+  const [answer, setAnswer] = useState("");
+  const router = useRouter();
+  const handleSubmit = (event) => {
     event.preventDefault();
 
     setIsSubmitting(true);
 
     // Send checkout data to server
-    const response = await fetch("/api/checkout", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name,
-        email,
-        address,
-        city,
-        country,
-        zipCode,
-        cardNumber,
-        expiryDate,
-        cvv,
-      }),
-    });
+    setAnswer("Rederecting...");
 
-    setIsSubmitting(false);
-
-    if (response.ok) {
-      // Show thank you message
-      setName("");
-      setEmail("");
-      setAddress("");
-      setCity("");
-      setCountry("");
-      setZipCode("");
-      setCardNumber("");
-      setExpiryDate("");
-      setCvv("");
-      setIsSubmitted(true);
-    } else {
-      // Handle error
-      console.error("Checkout failed.");
-    }
+    router.push("/succesful");
   };
 
   return (
@@ -84,6 +53,7 @@ export default function Checkout() {
               onChange={(e) => setEmail(e.target.value)}
               className={`${styles.formControl} ${styles.customInput}`}
               placeholder="Enter your email"
+              required="true"
             />
           </div>
           <div className={styles.formGroup}>
@@ -134,34 +104,37 @@ export default function Checkout() {
           <div className={styles.formGroup}>
             <label htmlFor="cardNumber">Card Number:</label>
             <input
-              type="text"
+              type="number"
               id="cardNumber"
               value={cardNumber}
               onChange={(e) => setCardNumber(e.target.value)}
               className={`${styles.formControl} ${styles.customInput}`}
               placeholder="Enter your card number"
+              required="true"
             />
           </div>
           <div className={styles.formGroup}>
             <label htmlFor="expiryDate">Expiry Date:</label>
             <input
-              type="text"
+              type="date"
               id="expiryDate"
               value={expiryDate}
               onChange={(e) => setExpiryDate(e.target.value)}
               className={`${styles.formControl} ${styles.customInput}`}
               placeholder="Enter your expiry date (MM/YY)"
+              required="true"
             />
           </div>
           <div className={styles.formGroup}>
             <label htmlFor="cvv">CVV:</label>
             <input
-              type="text"
+              type="number"
               id="cvv"
               value={cvv}
               onChange={(e) => setCvv(e.target.value)}
               className={`${styles.formControl} ${styles.customInput}`}
               placeholder="Enter your CVV"
+              required="true"
             />
           </div>
           <button
@@ -171,6 +144,10 @@ export default function Checkout() {
           >
             {isSubmitting ? "Submitting..." : "Submit"}
           </button>
+
+          <div style={{ marginTop: "16px" }}>
+            <p style={{ fontSize: "18px", paddingLeft: "8px" }}>{answer}</p>
+          </div>
         </form>
       )}
     </div>
