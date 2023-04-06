@@ -45,7 +45,6 @@ export default function Home() {
   }, [textInput]);
 
   const handleCardClick = (product) => {
-    console.log("Hello");
     setSelectedProduct(product);
     setIsModalOpen(true);
   };
@@ -87,7 +86,6 @@ export default function Home() {
                     description={product.description}
                     image={`/Assets/images/${product.filename}`}
                     price={product.price}
-                    onAddToCart={(item) => addToCart(item)}
                   />
                 </div>
               ))}
@@ -95,7 +93,11 @@ export default function Home() {
           </div>
         </div>
         {isModalOpen && (
-          <Modal product={selectedProduct} closeModal={handleModalClose} />
+          <Modal
+            product={selectedProduct}
+            closeModal={handleModalClose}
+            onAddToCart={(item) => addToCart(item)}
+          />
         )}
       </main>
     </>
