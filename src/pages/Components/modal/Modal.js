@@ -3,7 +3,7 @@ import Image from "next/image";
 import plus from "../../../../public/Assets/svgs/Add.svg";
 import minus from "../../../../public/Assets/svgs/Remove.svg";
 import favourites from "../../../../public/Assets/svgs/Favourites.svg";
-import { FavouriteContext } from "@/pages/context/favouriteContext";
+import { FavouriteContext } from "@/components/context/favouriteContext";
 import { useState, useContext } from "react";
 
 const Modal = ({
