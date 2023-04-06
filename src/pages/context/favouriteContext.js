@@ -1,32 +1,47 @@
-import { createContext, useReducer } from "react";
+import React, { createContext, useReducer } from "react";
 
 export const FavouriteContext = createContext({
   items: [],
 });
 
+const favouriteReducer = (state, action) => {
+  const { type, payload } = action;
+
+  switch (type) {
+    case "ADD":
+      return {
+        ...state,
+        items: [...state.items, payload.favourites],
+      };
+    case "REMOVE":
+      return {
+        ...state,
+        items: state.items.filter(
+          (currentFavourite) => currentFavourite.id !== payload.id
+        ),
+      };
+    default:
+      return state;
+  }
+};
+
 export const FavouriteProvider = ({ children }) => {
   const [state, dispatch] = useReducer(favouriteReducer, { items: [] });
 
   const addToFavourites = (favourites) => {
-    const updatedFavourites = [...state.items, favourites];
-
     dispatch({
       type: "ADD",
       payload: {
-        items: updatedFavourites,
+        favourites,
       },
     });
   };
 
   const removeFromFavourites = (id) => {
-    const updatedFavourites = state.items.filter(
-      (currentFavourites) => currentFavourites.id !== id
-    );
-
     dispatch({
       type: "REMOVE",
       payload: {
-        items: updatedFavourites,
+        id,
       },
     });
   };
@@ -42,23 +57,4 @@ export const FavouriteProvider = ({ children }) => {
       {children}
     </FavouriteContext.Provider>
   );
-};
-
-const favouriteReducer = (state, action) => {
-  const { type, payload } = action;
-
-  switch (type) {
-    case "ADD":
-      return {
-        ...state,
-        items: payload.items,
-      };
-    case "REMOVE":
-      return {
-        ...state,
-        items: payload.items,
-      };
-    default:
-      throw new Error("No case for that type");
-  }
 };
