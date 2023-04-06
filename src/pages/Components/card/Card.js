@@ -9,7 +9,7 @@ const Card = ({ name, description, image, price }) => {
       </div>
       <div className={styles.content}>
         <h4>{name}</h4>
-        <p style={{ height: "80px" }}>{description}</p>
+        <p style={{ height: "110px" }}>{description}</p>
         <p>Price: ${price}</p>
       </div>
     </div>
