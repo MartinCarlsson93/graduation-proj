@@ -8,24 +8,24 @@ function Login({ loggedIn, logIn, logOut }) {
   const [users, setUsers] = useState([]);
   const [answer, setAnswer] = useState("");
 
+  const fetchData = () => {
+    fetch("/Data/person.json")
+      .then((res) => res.json())
+      .then((data) => {
+        setUsers(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  useEffect(fetchData, []);
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
     const inputUserName = event.target.username.value;
     const inputPassword = event.target.password.value;
-
-    const fetchData = () => {
-      fetch("/Data/person.json")
-        .then((res) => res.json())
-        .then((data) => {
-          setUsers(data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    };
-
-    useEffect(fetchData, []);
 
     for (let i = 0; i < users.length; i++) {
       if (users[i].username === inputUserName) {
