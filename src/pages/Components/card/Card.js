@@ -1,11 +1,5 @@
-import React, { useContext, useState } from "react";
-import Image from "next/image";
+import React from "react";
 import styles from "./Card.module.css";
-import plus from "../../../../public/Assets/svgs/Add.svg";
-import minus from "../../../../public/Assets/svgs/Remove.svg";
-import favourites from "../../../../public/Assets/svgs/Favourites.svg";
-import campain from "../../../../public/Assets/svgs/Campain.svg";
-import { FavouriteContext } from "@/pages/context/favouriteContext";
 
 const Card = ({
   name,
@@ -54,16 +48,6 @@ const Card = ({
 
   return (
     <div className={styles.card}>
-      <div className={styles.icons}>
-        <Image
-          src={favourites}
-          alt="favourites"
-          width={30}
-          height={30}
-          onClick={addFavourite}
-        />
-        <Image src={campain} alt="campain" width={30} height={30} />
-      </div>
       <div className={styles.imageContainer}>
         <img src={image} alt={name} className={styles.image} />
       </div>
