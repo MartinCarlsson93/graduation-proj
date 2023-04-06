@@ -2,7 +2,7 @@ import React from "react";
 import Hero from "./Components/hero/Hero";
 import styles from "@/styles/Home.module.css";
 import FavouriteCard from "./Components/card/FavourtieCard";
-import { FavouriteContext } from "@/pages/context/favouriteContext";
+import { FavouriteContext } from "@/components/context/favouriteContext";
 import { useState, useEffect, useContext, useCallback } from "react";
 
 function Favourite() {

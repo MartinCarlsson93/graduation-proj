@@ -16,7 +16,7 @@ function MyProfile({ loggedIn, logOut }) {
     [loggedIn];
 
   useEffect(() => {
-    fetch("../data/person.json")
+    fetch("/Data/person.json")
       .then((response) => response.json())
       .then((data) => setPerson(data[0]));
   }, []);

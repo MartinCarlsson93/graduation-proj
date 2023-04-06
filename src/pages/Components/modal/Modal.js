@@ -3,7 +3,7 @@ import Image from "next/image";
 import plus from "../../../../public/Assets/svgs/Add.svg";
 import minus from "../../../../public/Assets/svgs/Remove.svg";
 import favourites from "../../../../public/Assets/svgs/Favourites.svg";
-import { FavouriteContext } from "@/pages/context/favouriteContext";
+import { FavouriteContext } from "@/components/context/favouriteContext";
 import { useState, useContext } from "react";
 
 const Modal = ({
@@ -19,21 +19,21 @@ const Modal = ({
   const [quantity, setQuantity] = useState(1);
   const { items, addToFavourites } = useContext(FavouriteContext);
 
+  name = product?.title;
+  description = product?.description;
+  image = `/Assets/images/${product?.filename}`;
+  price = product?.price;
+
   const addFavourite = () => {
     const item = {
-      name: product.title,
-      description: product.description,
-      image: product.filename,
+      name,
+      description,
+      image,
     };
     if (!items.includes(item.name)) {
       addToFavourites(item);
     }
   };
-
-  name = product.title;
-  description = product.description;
-  image = `/Assets/images/${product.filename}`;
-  price = product.price;
 
   const addToCart = () => {
     if (onAddToCart) {
@@ -79,17 +79,17 @@ const Modal = ({
             style={{ cursor: "pointer" }}
           />
         </div>
-        <h2>{product.title}</h2>
+        <h2>{product?.title}</h2>
         <Image
-          src={`/Assets/images/${product.filename}`}
+          src={`/Assets/images/${product?.filename}`}
           alt="Hej"
           width={150}
           height={200}
         />
-        <p>Type: {product.type}</p>
-        <p>Description: {product.description}</p>
-        <p>Price: {product.price}</p>
-        <p>Rating: {product.rating}</p>
+        <p>Type: {product?.type}</p>
+        <p>Description: {product?.description}</p>
+        <p>Price: {product?.price}</p>
+        <p>Rating: {product?.rating}</p>
         <div className={styles.quantity}>
           <Image
             src={minus}
@@ -109,14 +109,6 @@ const Modal = ({
         </div>
         <button className={styles.addToCartButton} onClick={addToCart}>
           Add to cart
-        </button>
-        <button
-          className={styles.removeFromCartButton}
-          onClick={() => {
-            onRemoveFromCart({ id: name });
-          }}
-        >
-          Remove from cart
         </button>
       </div>
     </div>

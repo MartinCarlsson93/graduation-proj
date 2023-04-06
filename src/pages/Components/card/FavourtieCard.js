@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import Image from "next/image";
 import styles from "./Card.module.css";
 import favourites from "../../../../public/Assets/svgs/IsFavourite.svg";
-import { FavouriteContext } from "@/pages/context/favouriteContext";
+import { FavouriteContext } from "@/components/context/favouriteContext";
 
 const Card = ({ name, description, image }) => {
   const [quantity, setQuantity] = useState(0);
@@ -38,12 +38,7 @@ const Card = ({ name, description, image }) => {
         />
       </div>
       <div className={styles.imageContainer}>
-        <Image
-          src={`/../public/Assets/images/${image}`}
-          alt={name}
-          width={150}
-          height={200}
-        />
+        <Image src={`/${image}`} alt={name} width={150} height={200} />
       </div>
       <div className={styles.content}>
         <h4>{name}</h4>
