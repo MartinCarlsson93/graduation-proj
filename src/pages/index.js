@@ -3,7 +3,7 @@ import Image from "next/image";
 import styles from "@/styles/Home.module.css";
 import Card from "./Components/card/Card";
 import search from "../../public/Assets/svgs/Search.svg";
-import { useState, useEffect } from "react";
+import { useState, useEffect, createContext } from "react";
 import Modal from "./Components/modal/Modal";
 import { useCart } from "../pages/context/cartProvider.js";
 
@@ -13,7 +13,7 @@ export default function Home() {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { cartItems, addToCart, removeFromCart } = useCart();
+  const { cartItems, addToCart, removeFromCart } = createContext(useCart);
 
   const fetchData = () => {
     fetch("/Data/food.json")
