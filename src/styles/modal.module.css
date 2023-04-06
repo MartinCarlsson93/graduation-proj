@@ -1,0 +1,84 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalContent {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+}
+
+.modalContent h2 {
+  margin-top: 0;
+}
+
+.modalContent p {
+  margin-bottom: 10px;
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.quantityValue {
+  font-size: 1.2rem;
+}
+.cartButton {
+  display: block;
+  margin: 0 auto;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  background-color: grey;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+}
+
+.icons {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.addToCartButton {
+  display: block;
+  margin: 0 auto;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  background-color: #f86f44;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  border: white 1px solid;
+}
+
+.addToCartButton:hover {
+  display: block;
+  margin: 0 auto;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  background-color: white;
+  color: #f86f44;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  border: #f86f44 1px solid;
+}

@@ -7,15 +7,25 @@ import phone from "../../public/Assets/svgs/contactUs.svg";
 import envelope from "../../public/Assets/svgs/Envelope.svg";
 
 function ContactForm() {
-  const [name, setName] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [email, setEmail] = useState("");
-  const [country, setCountry] = useState("");
-  const [message, setMessage] = useState("");
-  const [contactMethod, setContactMethod] = useState("phone");
+  const [answer, setAnswer] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    const data = {
+      name: event.target.name.value,
+      phonenr: event.target.phonenr.value,
+      textmessage: event.target.textmessage.value,
+      email: event.target.email.value,
+    };
+
+    const JSONData = JSON.stringify(data);
+
+    console.log(JSONData);
+
+    setAnswer(
+      `${event.target.name.value} have submitted a phonenumber: ${event.target.phonenr.value} and email: ${event.target.email.value} as contact information regarding this contact request of: ${event.target.textmessage.value}`
+    );
     // Handle form submission here
   };
 
@@ -28,7 +38,7 @@ function ContactForm() {
             <h2>Contact us by letter</h2>
             <p>123 Main Street</p>
             <p>Suite 100</p>
-            <p>Anytown USA</p>
+            <p>Solna Sweden</p>
           </div>
           <Image
             style={{ margin: "16px" }}
@@ -48,7 +58,7 @@ function ContactForm() {
           />
           <div>
             <h2>Contact us by phone</h2>
-            <p>+46770-555 555</p>
+            <p>+46 770-555 555</p>
             <p>Opening hours:</p>
             <p>Monday to Friday</p>
             <p> 9:00 AM to 5:00 PM </p>
@@ -105,6 +115,10 @@ function ContactForm() {
             <button className={formstyles.contentbutton} type="submit">
               Submit
             </button>
+
+            <div style={{ marginTop: "16px" }}>
+              <p style={{ fontSize: "18px", paddingLeft: "8px" }}>{answer}</p>
+            </div>
           </div>
         </form>
       </div>

@@ -17,13 +17,14 @@ function Header() {
 
   return (
     <div className={styles.header}>
-      <a href="/">
+      <a>
         <Image
           className={styles.weblogo}
           src="/Web-logo.png"
           alt="Grocify-logo"
           width={240}
           height={100}
+          onClick={() => router.push("/")}
         />
       </a>
 
@@ -66,15 +67,15 @@ function Header() {
           </div>
           <div
             className={styles.dropdownitem}
-            onClick={() => router.push("/campains")}
+            onClick={() => router.push("/favourites")}
           >
             <Image
-              src="/assets/svgs/Campain.svg"
-              alt="Campains"
+              src="/assets/svgs/Favourites.svg"
+              alt="Favourite"
               width={30}
               height={30}
             />
-            <p>Campains</p>
+            <p>Favourite</p>
           </div>
           <div
             className={styles.dropdownitem}
@@ -113,8 +114,10 @@ function Header() {
           <li className={isActive("/contact") ? "active" : ""}>
             <button onClick={() => router.push("/contact")}>Contact us</button>
           </li>
-          <li className={isActive("/campaigns") ? "active" : ""}>
-            <button onClick={() => router.push("/campaigns")}>Campaigns</button>
+          <li className={isActive("/favourites") ? "active" : ""}>
+            <button onClick={() => router.push("/favourites")}>
+              Favourites
+            </button>
           </li>
         </ul>
       </nav>
