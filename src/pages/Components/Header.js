@@ -46,7 +46,7 @@ function Header() {
             onClick={() => router.push("/my-profile")}
           >
             <Image
-              src="/assets/svgs/userCircle.svg"
+              src="../../../assets/svgs/userCircle.svg"
               alt="userCircle"
               width={30}
               height={30}
