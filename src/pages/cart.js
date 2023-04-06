@@ -22,6 +22,7 @@ function Cart() {
           image={item.image}
           quantity={item.quantity}
           onRemoveFromCart={(item) => removeFromCart(item)}
+          updateItemQuantity={updateItemQuantity}
         />
       </div>
     );
