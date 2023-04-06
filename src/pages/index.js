@@ -13,7 +13,7 @@ export default function Home() {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { addToCart } = useCart();
+  const { addToCart, removeFromCart } = useCart();
 
   const fetchData = () => {
     fetch("/Data/food.json")

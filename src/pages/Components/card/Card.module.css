@@ -21,6 +21,19 @@
   margin-bottom: 1rem;
 }
 
+.imageContainer {
+  width: 100%;
+}
+.content {
+  width: 100%;
+}
+
+.deletebtn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .icons {
   display: flex;
   width: 100%;
