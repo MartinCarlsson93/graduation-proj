@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import Hero from "./Components/hero/Hero";
 import styles from "../styles/cart.module.css";
-import Card from "./Components/card/Card.js";
+import Card from "./Components/card/CartCard.js";
 import { useRouter } from "next/router";
 import { FavouriteContext } from "../pages/context/favouriteContext.js";
 import { useCart } from "./context/cartProvider";
@@ -18,15 +18,11 @@ function Cart() {
         <Card
           key={item.id}
           name={item.name}
-          description={`Price: $${item.price}`}
-          image={item.image}
           price={item.price}
-          onAddToCart={(item) => addToCart(item)}
+          image={item.image}
+          quantity={item.quantity}
           onRemoveFromCart={(item) => removeFromCart(item)}
         />
-        <div>
-          <span>Quantity: {item.quantity}</span>
-        </div>
       </div>
     );
   }
@@ -51,7 +47,7 @@ function Cart() {
   };
 
   return (
-    <div className={styles.mainContainer}>
+    <div className="main-container">
       <Hero header="Cart" />
       <div className={styles.cartItems}>
         {favouriteCartItems && Array.isArray(favouriteCartItems)
@@ -74,12 +70,12 @@ function Cart() {
       </div>
       <div>
         <span>
-          <h3>Total amount: ${calculateTotal()}</h3>
+          <h3>Total amount: ${Math.trunc(calculateTotal())}</h3>
         </span>
       </div>
-      <div className={styles.checkout}>
-        <button onClick={handleCheckout}>Checkout</button>
-      </div>
+      <button className={styles.addToCartButton} onClick={handleCheckout}>
+        Checkout
+      </button>
     </div>
   );
 }
