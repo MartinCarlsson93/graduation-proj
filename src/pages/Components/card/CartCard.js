@@ -1,18 +1,28 @@
 import React from "react";
+import { useState } from "react";
 import Image from "next/image";
 import plus from "../../../../public/Assets/svgs/Add.svg";
 import minus from "../../../../public/Assets/svgs/Remove.svg";
 import trash from "../../../../public/Assets/svgs/Delete.svg";
 import styles from "./Card.module.css";
 
-const CartCard = ({ name, quantity, image, price, onRemoveFromCart }) => {
+const CartCard = ({
+  name,
+  quantity,
+  image,
+  price,
+  updateItemQuantity,
+  onRemoveFromCart,
+}) => {
+  const [thisquantity, setThisQuantity] = useState(quantity);
+
   const incrementQuantity = () => {
-    setQuantity((prevQuantity) => prevQuantity + 1);
+    setThisQuantity((prevQuantity) => prevQuantity + 1);
   };
 
   const decrementQuantity = () => {
-    if (quantity > 0) {
-      setQuantity((prevQuantity) => prevQuantity - 1);
+    if (thisquantity > 0) {
+      setThisQuantity((prevQuantity) => prevQuantity - 1);
     }
   };
 
@@ -48,7 +58,7 @@ const CartCard = ({ name, quantity, image, price, onRemoveFromCart }) => {
             style={{ cursor: "pointer" }}
           />
         </div>
-        <p>Quantity: {quantity}</p>
+        <p>Quantity: {thisquantity}</p>
         <div className={styles.deletebtn}>
           <Image
             src={trash}
