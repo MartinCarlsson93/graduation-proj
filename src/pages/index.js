@@ -3,8 +3,9 @@ import Image from "next/image";
 import styles from "@/styles/Home.module.css";
 import Card from "./Components/card/Card";
 import search from "../../public/Assets/svgs/Search.svg";
-import { useState, useEffect } from "react";
+import { useState, useEffect, createContext } from "react";
 import Modal from "./Components/modal/Modal";
+import { useCart } from "../pages/context/cartProvider.js";
 
 export default function Home() {
   const [products, setProducts] = useState([]);
@@ -12,6 +13,7 @@ export default function Home() {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { cartItems, addToCart, removeFromCart } = createContext(useCart);
 
   const fetchData = () => {
     fetch("/Data/food.json")
@@ -43,7 +45,6 @@ export default function Home() {
   }, [textInput]);
 
   const handleCardClick = (product) => {
-    console.log("Hello");
     setSelectedProduct(product);
     setIsModalOpen(true);
   };
@@ -84,6 +85,7 @@ export default function Home() {
                     name={product.title}
                     description={product.description}
                     image={`/Assets/images/${product.filename}`}
+                    price={product.price}
                   />
                 </div>
               ))}
@@ -91,7 +93,11 @@ export default function Home() {
           </div>
         </div>
         {isModalOpen && (
-          <Modal product={selectedProduct} closeModal={handleModalClose} />
+          <Modal
+            product={selectedProduct}
+            closeModal={handleModalClose}
+            onAddToCart={(item) => addToCart(item)}
+          />
         )}
       </main>
     </>
