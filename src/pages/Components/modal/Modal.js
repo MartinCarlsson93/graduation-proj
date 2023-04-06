@@ -36,16 +36,25 @@ const Modal = ({
   price = product.price;
 
   const addToCart = () => {
-    if (onAddToCart) {
-      onAddToCart({
-        name,
-        description,
-        image,
-        price,
-        id: name,
-        quantity: parseInt(quantity, 10),
-      });
-    }
+    console.log("Hej");
+    onAddToCart({
+      name,
+      description,
+      image,
+      price,
+      id: name,
+      quantity: parseInt(quantity, 10),
+    });
+    // if (onAddToCart) {
+    //   onAddToCart({
+    //     name,
+    //     description,
+    //     image,
+    //     price,
+    //     id: name,
+    //     quantity: parseInt(quantity, 10),
+    //   });
+    // }
   };
 
   const incrementQuantity = () => {
