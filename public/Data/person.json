@@ -1,0 +1,20 @@
+[
+    {
+        "id": 0,
+        "username": "martinc",
+        "firstname": "Martin",
+        "lastname": "Carlsson",
+        "email": "martin.carlsson@grocify.se",
+        "birthday": "1993-04-18",
+        "password": "123D321"
+    },
+    {
+        "id": 1,
+        "username": "carlsmar",
+        "firstname": "Martin",
+        "lastname": "Carlsson",
+        "email": "martin.carlsson@abc.se",
+        "birthday": "1993-04-18",
+        "password": "Glassbåt"
+    }
+]

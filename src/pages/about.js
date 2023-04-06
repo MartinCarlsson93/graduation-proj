@@ -9,7 +9,6 @@ function AboutUs() {
 
       <div className={aboutStyles.flexContainer}>
         <div className={aboutStyles.paragraphContainer}>
-          <h2>Our vision</h2>
           <p>
             We are dedicated to providing our customers with the highest
             quality, sustainable, organic, and farm-to-table products. Our

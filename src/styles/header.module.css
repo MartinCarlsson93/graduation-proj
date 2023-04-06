@@ -78,6 +78,9 @@
   .hamburgermenu {
     display: none;
   }
+  .dropdown {
+    display: none;
+  }
 }
 
 /* Desktop */
@@ -86,6 +89,9 @@
     display: block;
   }
   .hamburgermenu {
+    display: none;
+  }
+  .dropdown {
     display: none;
   }
 }
@@ -167,4 +173,8 @@
 
 .header .dropdown-content a:hover {
   background-color: #f5f5f5;
+}
+
+.weblogo {
+  cursor: pointer;
 }

@@ -3,29 +3,29 @@ import Image from "next/image";
 import styles from "@/styles/Home.module.css";
 import Card from "./Components/card/Card";
 import search from "../../public/Assets/svgs/Search.svg";
-import { useState, useEffect, useCallback } from "react";
-
+import { useState, useEffect, createContext } from "react";
+import Modal from "./Components/modal/Modal";
+import { useCart } from "../pages/context/cartProvider.js";
 
 export default function Home() {
   const [products, setProducts] = useState([]);
   const [textInput, setTextInput] = useState("");
-  const [filteredProducts, setfilteredProducts] = useState([]);
-
-  const [addToCart, setAddToCart] = useState([]);
-  const [favourites, setFavourites] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { cartItems, addToCart, removeFromCart } = createContext(useCart);
 
   const fetchData = () => {
     fetch("/Data/food.json")
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
-        setfilteredProducts(data);
+        setFilteredProducts(data);
       })
       .catch((error) => {
         console.log(error);
       });
   };
-  
 
   useEffect(fetchData, []);
 
@@ -38,13 +38,21 @@ export default function Home() {
       const filtered = filteredProducts.filter((product) => {
         return product.title.toLowerCase().includes(textInput.toLowerCase());
       });
-      setfilteredProducts(filtered);
+      setFilteredProducts(filtered);
     } else {
-      setfilteredProducts(products);
+      setFilteredProducts(products);
     }
   }, [textInput]);
 
-  console.log(filteredProducts);
+  const handleCardClick = (product) => {
+    setSelectedProduct(product);
+    setIsModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setSelectedProduct(null);
+    setIsModalOpen(false);
+  };
 
   return (
     <>
@@ -71,16 +79,26 @@ export default function Home() {
           <div className={styles.content}>
             <div className={styles.grid}>
               {filteredProducts.map((product) => (
-                <Card
-                  key={product.title}
-                  name={product.title}
-                  description={product.description}
-                  image={`/Assets/images/${product.filename}`} // assuming the images are in the Assets/images directory
-                />
+                <div onClick={() => handleCardClick(product)}>
+                  <Card
+                    key={product.title}
+                    name={product.title}
+                    description={product.description}
+                    image={`/Assets/images/${product.filename}`}
+                    price={product.price}
+                  />
+                </div>
               ))}
             </div>
           </div>
         </div>
+        {isModalOpen && (
+          <Modal
+            product={selectedProduct}
+            closeModal={handleModalClose}
+            onAddToCart={(item) => addToCart(item)}
+          />
+        )}
       </main>
     </>
   );

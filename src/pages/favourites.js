@@ -1,35 +1,35 @@
 import React from "react";
 import Hero from "./Components/hero/Hero";
 import styles from "@/styles/Home.module.css";
-import Card from "./Components/card/Card";
-import { useState, useEffect, useCallback } from "react";
+import FavouriteCard from "./Components/card/FavourtieCard";
+import { FavouriteContext } from "@/pages/context/favouriteContext";
+import { useState, useEffect, useContext, useCallback } from "react";
 
-function Campaigns() {
+function Favourite() {
+  const { items } = useContext(FavouriteContext);
   const [products, setProducts] = useState([]);
 
   const fetchData = () => {
-    fetch(`https://api.escuelajs.co/api/v1/products`)
-      .then((res) => res.json())
-      .then((data) => {
-        setProducts(data);
-      });
+    setProducts(items);
   };
 
   useEffect(fetchData, []);
 
+  console.log(items);
+
   return (
     <div className="main-container">
       <main className="main-container">
-        <Hero header="Campaigns" />
+        <Hero header="Favourites" />
         <div>
           <div className={styles.content}>
             <div className={styles.grid}>
               {products.map((product) => (
-                <Card
+                <FavouriteCard
                   key={product.id}
-                  name={product.title}
+                  name={product.name}
                   description={product.description}
-                  image={product.images[0]} // assuming the first image is the main one
+                  image={product.image}
                 />
               ))}
             </div>
@@ -40,4 +40,4 @@ function Campaigns() {
   );
 }
 
-export default Campaigns;
+export default Favourite;
