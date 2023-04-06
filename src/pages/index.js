@@ -5,7 +5,7 @@ import Card from "./Components/card/Card";
 import search from "../../public/Assets/svgs/Search.svg";
 import { useState, useEffect, createContext } from "react";
 import Modal from "./Components/modal/Modal";
-import { useCart } from "../pages/context/cartProvider.js";
+import { useCart } from "../components/context/cartProvider.js";
 
 export default function Home() {
   const [products, setProducts] = useState([]);

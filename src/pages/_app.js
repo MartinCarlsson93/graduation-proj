@@ -2,8 +2,8 @@ import "@/styles/globals.css";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import { useState, useEffect, createContext } from "react";
-import { FavouriteProvider } from "../pages/context/favouriteContext";
-import { CartProvider } from "../pages/context/cartProvider";
+import { FavouriteProvider } from "../components/context/favouriteContext";
+import { CartProvider } from "../components/context/cartProvider";
 
 import { Rubik } from "next/font/google";
 

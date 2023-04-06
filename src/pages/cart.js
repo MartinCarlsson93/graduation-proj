@@ -3,8 +3,8 @@ import Hero from "./Components/hero/Hero";
 import styles from "../styles/cart.module.css";
 import Card from "./Components/card/CartCard.js";
 import { useRouter } from "next/router";
-import { FavouriteContext } from "../pages/context/favouriteContext.js";
-import { useCart } from "./context/cartProvider";
+import { FavouriteContext } from "../components/context/favouriteContext.js";
+import { useCart } from "../components/context/cartProvider";
 
 function Cart() {
   const { cartItems, addToCart, removeFromCart, updateItemQuantity } =
