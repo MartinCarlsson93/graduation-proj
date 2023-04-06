@@ -21,7 +21,7 @@ function Cart() {
           price={item.price}
           image={item.image}
           quantity={item.quantity}
-          onRemoveFromCart={(item) => removeFromCart(item)}
+          onRemoveFromCart={() => removeFromCart(item)}
         />
       </div>
     );
