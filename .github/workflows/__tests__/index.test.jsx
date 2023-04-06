@@ -1,8 +1,9 @@
 import { render, screen } from "@testing-library/react";
 import Home from "../../../src/pages/index";
+import About from "../../../src/pages/about";
 import "@testing-library/jest-dom";
 
-describe("Home", () => {
+describe("About", () => {
   it("renders a heading", () => {
     global.fetch = jest.fn(() =>
       Promise.resolve({
@@ -11,9 +12,9 @@ describe("Home", () => {
         },
       })
     );
-    render(<Home />);
+    render(<About />);
 
-    const heading = screen.getByText("Grocify");
+    const heading = screen.getByText("About Grocify");
 
     expect(heading).toBeInTheDocument();
   });
