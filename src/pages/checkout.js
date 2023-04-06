@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "../Styles/checkout.module.css";
+import styles from "../styles/checkout.module.css";
 
 export default function Checkout() {
   const [name, setName] = useState("");
@@ -61,9 +61,7 @@ export default function Checkout() {
   return (
     <div>
       {isSubmitted ? (
-        <div className={styles.thankYouMessage}>
-          Thank you for your order!
-        </div>
+        <div className={styles.thankYouMessage}>Thank you for your order!</div>
       ) : (
         <form onSubmit={handleSubmit} className={styles.checkoutForm}>
           <div className={styles.formGroup}>
@@ -109,9 +107,9 @@ export default function Checkout() {
               className={`${styles.formControl} ${styles.customInput}`}
               placeholder="Enter your city"
             />
-            </div>
-         
-         <div className={styles.formGroup}>
+          </div>
+
+          <div className={styles.formGroup}>
             <label htmlFor="country">Country:</label>
             <input
               type="text"
@@ -178,6 +176,3 @@ export default function Checkout() {
     </div>
   );
 }
-
-
-
