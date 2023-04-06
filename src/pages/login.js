@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Hero from "./Components/hero/Hero";
 import formstyles from "../styles/form.module.css";
 
 function Login({ loggedIn, logIn, logOut }) {
   const router = useRouter();
+  const [users, setUsers] = useState([]);
   const [answer, setAnswer] = useState("");
 
   const handleSubmit = (event) => {
@@ -13,7 +14,18 @@ function Login({ loggedIn, logIn, logOut }) {
     const inputUserName = event.target.username.value;
     const inputPassword = event.target.password.value;
 
-    let users = require("../../public/Data/person.json");
+    const fetchData = () => {
+      fetch("/Data/person.json")
+        .then((res) => res.json())
+        .then((data) => {
+          setUsers(data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
+
+    useEffect(fetchData, []);
 
     for (let i = 0; i < users.length; i++) {
       if (users[i].username === inputUserName) {
