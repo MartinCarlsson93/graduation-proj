@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import Hero from "./Components/hero/Hero";
+import Hero from "../components/hero/Hero";
 import formstyles from "../styles/form.module.css";
 
 function Login({ loggedIn, logIn, logOut, person }) {

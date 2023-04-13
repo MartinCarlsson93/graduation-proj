@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import ShoppingCart from "../../../public/Assets/svgs/ShoppingCart.svg";
-import hamburgerMenu from "../../../public/Assets/svgs/hamburgerMenu.svg";
-import userCircle from "../../../public/Assets/svgs/userCircle.svg";
-import contactUs from "../../../public/Assets/svgs/contactUs.svg";
-import favourites from "../../../public/Assets/svgs/Favourites.svg";
-import styles from "../../styles/header.module.css";
+import ShoppingCart from "../../public/Assets/svgs/ShoppingCart.svg";
+import hamburgerMenu from "../../public/Assets/svgs/hamburgerMenu.svg";
+import userCircle from "../../public/Assets/svgs/userCircle.svg";
+import contactUs from "../../public/Assets/svgs/contactUs.svg";
+import favourites from "../../public/Assets/svgs/Favourites.svg";
+import styles from "../styles/header.module.css";
 
 function Header() {
   const router = useRouter();

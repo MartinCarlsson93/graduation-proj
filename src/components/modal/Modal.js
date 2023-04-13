@@ -1,9 +1,9 @@
-import styles from "../../../styles/modal.module.css";
+import styles from "../../styles/modal.module.css";
 import Image from "next/image";
-import plus from "../../../../public/Assets/svgs/Add.svg";
-import minus from "../../../../public/Assets/svgs/Remove.svg";
-import isfavourites from "../../../../public/Assets/svgs/IsFavourite.svg";
-import favourites from "../../../../public/Assets/svgs/Favourites.svg";
+import plus from "../../../public/Assets/svgs/Add.svg";
+import minus from "../../../public/Assets/svgs/Remove.svg";
+import isfavourites from "../../../public/Assets/svgs/IsFavourite.svg";
+import favourites from "../../../public/Assets/svgs/Favourites.svg";
 import { FavouriteContext } from "@/components/context/favouriteContext";
 import { useState, useContext } from "react";
 

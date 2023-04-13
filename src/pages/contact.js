@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import contactstyles from "../styles/contactus.module.css";
 import formstyles from "../styles/form.module.css";
-import Hero from "./Components/hero/Hero";
+import Hero from "../components/hero/Hero";
 import Image from "next/image";
 import phone from "../../public/Assets/svgs/contactUs.svg";
 import envelope from "../../public/Assets/svgs/Envelope.svg";

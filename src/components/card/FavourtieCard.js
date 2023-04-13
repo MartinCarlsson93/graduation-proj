@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import Image from "next/image";
 import styles from "./Card.module.css";
-import favourites from "../../../../public/Assets/svgs/IsFavourite.svg";
+import favourites from "../../../public/Assets/svgs/IsFavourite.svg";
 import { FavouriteContext } from "@/components/context/favouriteContext";
 
 const Card = ({ name, description, image }) => {

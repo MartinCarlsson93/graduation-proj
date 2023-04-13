@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Hero from "./Components/hero/Hero";
+import Hero from "../components/hero/Hero";
 import formstyles from "../styles/form.module.css";
 
 function SignUp() {
