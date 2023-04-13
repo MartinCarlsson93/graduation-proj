@@ -94,7 +94,7 @@ function Login({ loggedIn, logIn, logOut, person }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   let res = await fetch("http://localhost:3000/api/persons", {
     method: "GET",
     headers: {
