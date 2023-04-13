@@ -2,6 +2,7 @@ import styles from "../../../styles/modal.module.css";
 import Image from "next/image";
 import plus from "../../../../public/Assets/svgs/Add.svg";
 import minus from "../../../../public/Assets/svgs/Remove.svg";
+import isfavourites from "../../../../public/Assets/svgs/IsFavourite.svg";
 import favourites from "../../../../public/Assets/svgs/Favourites.svg";
 import { FavouriteContext } from "@/components/context/favouriteContext";
 import { useState, useContext } from "react";
@@ -14,10 +15,10 @@ const Modal = ({
   image,
   price,
   onAddToCart,
-  onRemoveFromCart,
 }) => {
   const [quantity, setQuantity] = useState(1);
-  const { items, addToFavourites } = useContext(FavouriteContext);
+  const { items, addToFavourites, removeFromFavourites } =
+    useContext(FavouriteContext);
 
   name = product?.title;
   description = product?.description;
@@ -30,7 +31,7 @@ const Modal = ({
       description,
       image,
     };
-    if (!items.includes(item.name)) {
+    if (!items.find((e) => e.name === item.name)) {
       addToFavourites(item);
     }
   };
@@ -63,7 +64,11 @@ const Modal = ({
       <div className={styles.modalContent}>
         <div className={styles.icons}>
           <Image
-            src={favourites}
+            src={
+              items.find((e) => e.name === product.title)
+                ? isfavourites
+                : favourites
+            }
             alt="favourites"
             width={30}
             height={30}
