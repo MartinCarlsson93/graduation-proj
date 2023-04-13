@@ -3,20 +3,13 @@ import { useRouter } from "next/router";
 import Hero from "./Components/hero/Hero";
 import formstyles from "../styles/form.module.css";
 
-function Login({ loggedIn, logIn, logOut }) {
+function Login({ loggedIn, logIn, logOut, person }) {
   const router = useRouter();
   const [users, setUsers] = useState([]);
   const [answer, setAnswer] = useState("");
 
   const fetchData = () => {
-    fetch("/Data/person.json")
-      .then((res) => res.json())
-      .then((data) => {
-        setUsers(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    setUsers(person);
   };
 
   useEffect(fetchData, []);
@@ -99,6 +92,20 @@ function Login({ loggedIn, logIn, logOut }) {
       </form>
     </div>
   );
+}
+
+export async function getStaticProps() {
+  let res = await fetch("http://localhost:3000/api/persons", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  let person = await res.json();
+
+  return {
+    props: { person },
+  };
 }
 
 export default Login;

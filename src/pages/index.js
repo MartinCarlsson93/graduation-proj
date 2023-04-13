@@ -6,8 +6,8 @@ import { useState, useEffect, createContext } from "react";
 import Modal from "./Components/modal/Modal";
 import { useCart } from "../components/context/cartProvider.js";
 
-function Home({ allProducts }) {
-  const [products, setProducts] = useState([]);
+function Home({ products }) {
+  const [thisProducts, setThisProducts] = useState([]);
   const [textInput, setTextInput] = useState("");
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -15,8 +15,8 @@ function Home({ allProducts }) {
   const { addToCart, removeFromCart } = useCart();
 
   const fetchData = () => {
-    setProducts(allProducts);
-    setFilteredProducts(allProducts);
+    setThisProducts(products);
+    setFilteredProducts(products);
   };
 
   useEffect(fetchData, []);
@@ -45,8 +45,6 @@ function Home({ allProducts }) {
     setSelectedProduct(null);
     setIsModalOpen(false);
   };
-
-  console.log(allProducts);
   return (
     <>
       <main className="main-container">
@@ -91,17 +89,17 @@ function Home({ allProducts }) {
   );
 }
 
-export async function getServerSideProps(context) {
+export async function getStaticProps() {
   let res = await fetch("http://localhost:3000/api/products", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
     },
   });
-  let allProducts = await res.json();
+  let products = await res.json();
 
   return {
-    props: { allProducts },
+    props: { products },
   };
 }
 
