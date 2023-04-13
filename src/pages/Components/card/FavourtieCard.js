@@ -38,7 +38,7 @@ const Card = ({ name, description, image }) => {
         />
       </div>
       <div className={styles.imageContainer}>
-        <Image src={`/${image}`} alt={name} width={150} height={200} />
+        <Image src={`${image}`} alt={name} width={150} height={200} />
       </div>
       <div className={styles.content}>
         <h4>{name}</h4>
