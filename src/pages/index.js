@@ -6,7 +6,7 @@ import { useState, useEffect, createContext } from "react";
 import Modal from "./Components/modal/Modal";
 import { useCart } from "../components/context/cartProvider.js";
 
-export default function Home() {
+function Home({ allProducts }) {
   const [products, setProducts] = useState([]);
   const [textInput, setTextInput] = useState("");
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -15,15 +15,8 @@ export default function Home() {
   const { addToCart, removeFromCart } = useCart();
 
   const fetchData = () => {
-    fetch("/Data/food.json")
-      .then((res) => res.json())
-      .then((data) => {
-        setProducts(data);
-        setFilteredProducts(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    setProducts(allProducts);
+    setFilteredProducts(allProducts);
   };
 
   useEffect(fetchData, []);
@@ -53,6 +46,7 @@ export default function Home() {
     setIsModalOpen(false);
   };
 
+  console.log(allProducts);
   return (
     <>
       <main className="main-container">
@@ -96,3 +90,19 @@ export default function Home() {
     </>
   );
 }
+
+export async function getServerSideProps(context) {
+  let res = await fetch("http://localhost:3000/api/products", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  let allProducts = await res.json();
+
+  return {
+    props: { allProducts },
+  };
+}
+
+export default Home;
