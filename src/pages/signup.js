@@ -8,10 +8,8 @@ function SignUp({ person }) {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    console.log(person);
-
     const data = {
-      id: users.length ? Math.max(...users.map((x) => x.id)) + 1 : 1,
+      id: person.length ? Math.max(...person.map((x) => x.id)) + 1 : 1,
       username: event.target.username.value,
       firstname: event.target.firstname.value,
       lastname: event.target.lastname.value,
@@ -22,7 +20,13 @@ function SignUp({ person }) {
 
     const jsonData = JSON.stringify(data);
 
-    console.log(jsonData);
+    fetch(`${process.env.API_URL}/api/persons`, {
+      method: "POST",
+      body: jsonData,
+    })
+      .then((res) => res.json())
+      .then((_data) => console.log(_data));
+
     setAnswer(`Succesfully saved user for ${event.target.username.value}`);
     //TODO ADD SO THAT WHEN WE SAVE IS ADDED TO PERSON JSON
   };

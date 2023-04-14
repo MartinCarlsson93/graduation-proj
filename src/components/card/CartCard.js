@@ -4,7 +4,7 @@ import Image from "next/image";
 import plus from "../../../public/Assets/svgs/Add.svg";
 import minus from "../../../public/Assets/svgs/Remove.svg";
 import trash from "../../../public/Assets/svgs/Delete.svg";
-import styles from "./Card.module.css";
+import styles from "../../styles/cart.module.css";
 
 const CartCard = ({
   name,
