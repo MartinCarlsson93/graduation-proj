@@ -1,5 +1,4 @@
 import { render, screen } from "@testing-library/react";
-import Home from "../../../src/pages/index";
 import About from "../../../src/pages/about";
 import "@testing-library/jest-dom";
 
