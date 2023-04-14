@@ -37,7 +37,7 @@ function AboutUs() {
             to make a positive impact on our planet.
           </p>
           <p>
-            <h2>We are a community</h2> of passionate individuals working
+            <h2>We are a community!</h2> of passionate individuals working
             together to create a healthier, more sustainable future for all.
             Thank you for choosing to shop with us and for supporting our
             mission to make a difference, one meal at a time.
