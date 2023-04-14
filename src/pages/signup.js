@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import Hero from "../components/hero/Hero";
 import formstyles from "../styles/form.module.css";
 
-function SignUp() {
-  let users = require("../../public/Data/person.json");
+function SignUp({person}) {
   const [answer, setAnswer] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    console.log(person)
 
     const data = {
       id: users.length ? Math.max(...users.map((x) => x.id)) + 1 : 1,
@@ -103,6 +104,20 @@ function SignUp() {
       </form>
     </div>
   );
+}
+
+export async function getServerSideProps() {
+  let res = await fetch("http://localhost:3000/api/persons", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  let person = await res.json();
+
+  return {
+    props: { person },
+  };
 }
 
 export default SignUp;

@@ -4,8 +4,8 @@ import Image from "next/image";
 import Hero from "../components/hero/Hero";
 import profilestyles from "../styles/profile.module.css";
 
-function MyProfile({ loggedIn, logOut }) {
-  const [person, setPerson] = useState(null);
+function MyProfile({ loggedIn, logOut, person }) {
+  const [user, setUser] = useState(null);
   const router = useRouter();
 
   useEffect(() => {
@@ -15,23 +15,25 @@ function MyProfile({ loggedIn, logOut }) {
   }),
     [loggedIn];
 
-  useEffect(() => {
-    fetch("/Data/person.json")
-      .then((response) => response.json())
-      .then((data) => setPerson(data[0]));
-  }, []);
+  const fetchData = () => {
+    setUser(person[0]);
+  };
+
+  useEffect(fetchData, []);
 
   const handleLogout = () => {
     logOut();
   };
 
-  const renderProfile = (person) => {
+  console.log(person[0]);
+
+  const renderProfile = (_person) => {
     return (
       <div className={profilestyles.profile}>
         <div className={profilestyles.profileHeader}>
           <h2
             className={profilestyles.profileHeading}
-          >{`${person.firstname} ${person.lastname}`}</h2>
+          >{`${_person.firstname} ${_person.lastname}`}</h2>
           <button className={profilestyles.logoutButton} onClick={handleLogout}>
             Log out
           </button>
@@ -47,19 +49,19 @@ function MyProfile({ loggedIn, logOut }) {
           </div>
           <div className={profilestyles.profileInfo}>
             <p>
-              <strong>Username:</strong> {person.username}
+              <strong>Username:</strong> {_person.username}
             </p>
             <p>
-              <strong>Email:</strong> {person.email}
+              <strong>Email:</strong> {_person.email}
             </p>
             <p>
-              <strong>Birthday:</strong> {person.birthday}
+              <strong>Birthday:</strong> {_person.birthday}
             </p>
             <p>
-              <strong>Firstname:</strong> {person.firstname}
+              <strong>Firstname:</strong> {_person.firstname}
             </p>
             <p>
-              <strong>Lastname:</strong> {person.lastname}
+              <strong>Lastname:</strong> {_person.lastname}
             </p>
           </div>
         </div>
@@ -70,9 +72,23 @@ function MyProfile({ loggedIn, logOut }) {
   return (
     <div className={profilestyles.container}>
       <Hero header="My Profile" />
-      {loggedIn && person ? renderProfile(person) : "redirecting..."}
+      {loggedIn && user ? renderProfile(user) : "redirecting..."}
     </div>
   );
+}
+
+export async function getServerSideProps() {
+  let res = await fetch("http://localhost:3000/api/persons", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  let person = await res.json();
+
+  return {
+    props: { person },
+  };
 }
 
 export default MyProfile;

@@ -2,19 +2,16 @@ import React, { useState, useEffect } from "react";
 import Hero from "../components/hero/Hero";
 import formstyles from "../styles/form.module.css";
 
-function ForgottPass() {
+function ForgottPass({ person }) {
   const [answer, setAnswer] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    let users = require("../../public/Data/person.json");
-
     const inputUserName = event.target.username.value;
 
-    for (let i = 0; i < users.length; i++) {
-      if (users[i].username === inputUserName) {
-        setAnswer(users[i].password);
+    for (let i = 0; i < person.length; i++) {
+      if (person[i].username === inputUserName) {
+        setAnswer(person[i].password);
         break;
       } else {
         setAnswer("No user found");
@@ -58,6 +55,20 @@ function ForgottPass() {
       </form>
     </div>
   );
+}
+
+export async function getServerSideProps() {
+  let res = await fetch("http://localhost:3000/api/persons", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  let person = await res.json();
+
+  return {
+    props: { person },
+  };
 }
 
 export default ForgottPass;
