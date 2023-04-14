@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Image from "next/image";
 import styles from "@/styles/Home.module.css";
 import Card from "./Components/card/Card";
 import search from "../../public/Assets/svgs/Search.svg";
@@ -6,8 +7,8 @@ import { useState, useEffect, createContext } from "react";
 import Modal from "./Components/modal/Modal";
 import { useCart } from "../components/context/cartProvider.js";
 
-export default function Home() {
-  const [products, setProducts] = useState([]);
+function Home({ products }) {
+  const [thisProducts, setThisProducts] = useState([]);
   const [textInput, setTextInput] = useState("");
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -15,15 +16,8 @@ export default function Home() {
   const { addToCart, removeFromCart } = useCart();
 
   const fetchData = () => {
-    fetch("/Data/food.json")
-      .then((res) => res.json())
-      .then((data) => {
-        setProducts(data);
-        setFilteredProducts(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    setThisProducts(products);
+    setFilteredProducts(products);
   };
 
   useEffect(fetchData, []);
@@ -52,7 +46,6 @@ export default function Home() {
     setSelectedProduct(null);
     setIsModalOpen(false);
   };
-
   return (
     <>
       <main className="main-container">
@@ -96,3 +89,19 @@ export default function Home() {
     </>
   );
 }
+
+export async function getServerSideProps() {
+  let res = await fetch("http://localhost:3000/api/products", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  let products = await res.json();
+
+  return {
+    props: { products },
+  };
+}
+
+export default Home;

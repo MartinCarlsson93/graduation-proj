@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import Hero from "./Components/hero/Hero";
+import Hero from "../components/hero/Hero";
 import profilestyles from "../styles/profile.module.css";
 
 function MyProfile({ loggedIn, logOut }) {

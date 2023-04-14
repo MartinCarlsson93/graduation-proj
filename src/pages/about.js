@@ -1,5 +1,5 @@
 import React from "react";
-import Hero from "./Components/hero/Hero";
+import Hero from "../components/hero/Hero";
 import aboutStyles from "../styles/about.module.css";
 
 function AboutUs() {

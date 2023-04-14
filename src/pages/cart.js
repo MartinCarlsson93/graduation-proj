@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import Hero from "./Components/hero/Hero";
+import Hero from "../components/hero/Hero";
 import styles from "../styles/cart.module.css";
-import Card from "./Components/card/CartCard.js";
+import Card from "../components/card/CartCard.js";
 import { useRouter } from "next/router";
 import { FavouriteContext } from "../components/context/favouriteContext.js";
 import { useCart } from "../components/context/cartProvider";
