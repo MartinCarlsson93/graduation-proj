@@ -58,7 +58,7 @@ function ForgottPass({ person }) {
 }
 
 export async function getServerSideProps() {
-  let res = await fetch("http://localhost:3000/api/persons", {
+  let res = await fetch(`${process.env.ROOT_URL}/api/persons`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

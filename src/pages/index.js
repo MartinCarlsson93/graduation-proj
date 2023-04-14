@@ -90,7 +90,7 @@ function Home({ products }) {
 }
 
 export async function getServerSideProps() {
-  let res = await fetch("http://localhost:3000/api/products", {
+  let res = await fetch(`${process.env.ROOT_URL}/api/products`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
