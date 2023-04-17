@@ -36,7 +36,7 @@ function SignUp({ person }) {
       <Hero header="Sign up" />
       <form className={formstyles.formstyle} onSubmit={handleSubmit}>
         <div className={formstyles.formcontainer}>
-          <label className={formstyles.formlabel} for="username">
+          <label className={formstyles.formlabel} htmlFor="username">
             Username
           </label>
           <input
@@ -46,7 +46,7 @@ function SignUp({ person }) {
             name="username"
             required
           />
-          <label className={formstyles.formlabel} for="firstname">
+          <label className={formstyles.formlabel} htmlFor="firstname">
             Firstname
           </label>
           <input
@@ -56,7 +56,7 @@ function SignUp({ person }) {
             name="firstname"
             required
           />
-          <label className={formstyles.formlabel} for="lastname">
+          <label className={formstyles.formlabel} htmlFor="lastname">
             Lastname
           </label>
           <input
@@ -66,7 +66,7 @@ function SignUp({ person }) {
             name="lastname"
             required
           />
-          <label className={formstyles.formlabel} for="email">
+          <label className={formstyles.formlabel} htmlFor="email">
             Email
           </label>
           <input
@@ -76,7 +76,7 @@ function SignUp({ person }) {
             name="email"
             required
           />
-          <label className={formstyles.formlabel} for="birthdate">
+          <label className={formstyles.formlabel} htmlFor="birthdate">
             Birthday
           </label>
           <input
@@ -86,7 +86,7 @@ function SignUp({ person }) {
             name="birthdate"
             required
           />
-          <label className={formstyles.formlabel} for="password">
+          <label className={formstyles.formlabel} htmlFor="password">
             Password
           </label>
           <input

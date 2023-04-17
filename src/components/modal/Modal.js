@@ -93,7 +93,7 @@ const Modal = ({
         />
         <p>Type: {product?.type}</p>
         <p>Description: {product?.description}</p>
-        <p>Price: {product?.price}</p>
+        <p>Price: {product?.price}sek</p>
         <p>Rating: {product?.rating}</p>
         <div className={styles.quantity}>
           <Image

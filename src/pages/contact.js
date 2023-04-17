@@ -68,7 +68,7 @@ function ContactForm() {
       <div>
         <form className={formstyles.formstyle} onSubmit={handleSubmit}>
           <div className={formstyles.formcontainer}>
-            <label className={formstyles.formlabel} for="name">
+            <label className={formstyles.formlabel} htmlFor="name">
               Name
             </label>
             <input
@@ -79,7 +79,7 @@ function ContactForm() {
               required
             />
 
-            <label className={formstyles.formlabel} for="phonenr">
+            <label className={formstyles.formlabel} htmlFor="phonenr">
               Phonenumber
             </label>
             <input
@@ -89,7 +89,7 @@ function ContactForm() {
               name="phonenr"
             />
 
-            <label className={formstyles.formlabel} for="email">
+            <label className={formstyles.formlabel} htmlFor="email">
               Email
             </label>
             <input
@@ -100,7 +100,7 @@ function ContactForm() {
               required
             />
 
-            <label className={formstyles.formlabel} for="textmessage">
+            <label className={formstyles.formlabel} htmlFor="textmessage">
               Type Message
             </label>
             <textarea

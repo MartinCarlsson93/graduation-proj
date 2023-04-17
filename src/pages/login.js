@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import Hero from "../components/hero/Hero";
 import formstyles from "../styles/form.module.css";
 
-function Login({ loggedIn, logIn, logOut, person }) {
+function Login({ loggedIn, logIn, logOut, person, setLoginUser, loginUser }) {
   const router = useRouter();
   const [users, setUsers] = useState([]);
   const [answer, setAnswer] = useState("");
@@ -25,26 +25,27 @@ function Login({ loggedIn, logIn, logOut, person }) {
         if (users[i].password === inputPassword) {
           setAnswer("Succesfully logged in");
           logIn();
+          setLoginUser(inputUserName);
           router.push("/my-profile");
         } else {
           setAnswer("Wrong password to the connected userName");
+          setLoginUser("");
           logOut();
         }
         break;
       } else {
         setAnswer("No user found with thoose credentials");
+        setLoginUser("");
         logOut();
       }
     }
-
-    console.log(loggedIn);
   };
   return (
     <div className="main-container">
       <Hero header="Login" />
       <form className={formstyles.formstyle} onSubmit={handleSubmit}>
         <div className={formstyles.formcontainer}>
-          <label className={formstyles.formlabel} for="username">
+          <label className={formstyles.formlabel} htmlFor="username">
             Username
           </label>
           <input
@@ -55,7 +56,7 @@ function Login({ loggedIn, logIn, logOut, person }) {
             required
           />
 
-          <label className={formstyles.formlabel} for="password">
+          <label className={formstyles.formlabel} htmlFor="password">
             Password
           </label>
           <input

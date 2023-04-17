@@ -39,7 +39,7 @@ const CartCard = ({
       </div>
       <div className={styles.content}>
         <h4>{name}</h4>
-        <p>Price: ${price}</p>
+        <p>Price: {price}sek</p>
         <div className={styles.icons}>
           <Image
             src={minus}
