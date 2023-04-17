@@ -4,7 +4,7 @@ import Image from "next/image";
 import Hero from "../components/hero/Hero";
 import profilestyles from "../styles/profile.module.css";
 
-function MyProfile({ loggedIn, logOut, person }) {
+function MyProfile({ loggedIn, logOut, person, loginUser }) {
   const [user, setUser] = useState(null);
   const router = useRouter();
 
@@ -16,7 +16,7 @@ function MyProfile({ loggedIn, logOut, person }) {
     [loggedIn];
 
   const fetchData = () => {
-    setUser(person[0]);
+    setUser(_user);
   };
 
   useEffect(fetchData, []);
@@ -25,7 +25,7 @@ function MyProfile({ loggedIn, logOut, person }) {
     logOut();
   };
 
-  console.log(person[0]);
+  let _user = person.find((user) => user.username === loginUser);
 
   const renderProfile = (_person) => {
     return (

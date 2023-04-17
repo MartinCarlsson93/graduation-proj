@@ -12,6 +12,7 @@ const rubik = Rubik({ subsets: ["latin"] });
 
 export default function App({ Component, pageProps }) {
   const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedInUser, setLoggedInUser] = useState("");
 
   const logIn = () => setLoggedIn(true);
   const logOut = () => setLoggedIn(false);
@@ -33,6 +34,8 @@ export default function App({ Component, pageProps }) {
               loggedIn={loggedIn}
               logIn={logIn}
               logOut={logOut}
+              setLoginUser={setLoggedInUser}
+              loginUser={loggedInUser}
             />
           </CartProvider>
         </FavouriteProvider>

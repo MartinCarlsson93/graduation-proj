@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import Hero from "../components/hero/Hero";
 import formstyles from "../styles/form.module.css";
 
-function Login({ loggedIn, logIn, logOut, person }) {
+function Login({ loggedIn, logIn, logOut, person, setLoginUser, loginUser }) {
   const router = useRouter();
   const [users, setUsers] = useState([]);
   const [answer, setAnswer] = useState("");
@@ -25,19 +25,21 @@ function Login({ loggedIn, logIn, logOut, person }) {
         if (users[i].password === inputPassword) {
           setAnswer("Succesfully logged in");
           logIn();
+          setLoginUser(inputUserName);
+          console.log(loginUser);
           router.push("/my-profile");
         } else {
           setAnswer("Wrong password to the connected userName");
+          setLoginUser("");
           logOut();
         }
         break;
       } else {
         setAnswer("No user found with thoose credentials");
+        setLoginUser("");
         logOut();
       }
     }
-
-    console.log(loggedIn);
   };
   return (
     <div className="main-container">
