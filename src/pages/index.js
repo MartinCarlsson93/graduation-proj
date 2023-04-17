@@ -12,7 +12,7 @@ function Home({ products }) {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { addToCart, removeFromCart } = useCart();
+  const { addToCart } = useCart();
 
   const fetchData = () => {
     setThisProducts(products);
