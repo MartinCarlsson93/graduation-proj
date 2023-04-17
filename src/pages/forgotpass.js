@@ -9,9 +9,11 @@ function ForgottPass({ person }) {
     event.preventDefault();
     const inputUserName = event.target.username.value;
 
+    let user = person.find((user) => user.username === inputUserName);
+
     for (let i = 0; i < person.length; i++) {
       if (person[i].username === inputUserName) {
-        setAnswer(person[i].password);
+        setAnswer(user.password);
         break;
       } else {
         setAnswer("No user found");
