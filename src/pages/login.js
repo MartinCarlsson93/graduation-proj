@@ -26,7 +26,6 @@ function Login({ loggedIn, logIn, logOut, person, setLoginUser, loginUser }) {
           setAnswer("Succesfully logged in");
           logIn();
           setLoginUser(inputUserName);
-          console.log(loginUser);
           router.push("/my-profile");
         } else {
           setAnswer("Wrong password to the connected userName");

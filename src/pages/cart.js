@@ -71,7 +71,7 @@ function Cart() {
       </div>
       <div>
         <span>
-          <h3>Total amount: ${Math.trunc(calculateTotal())}</h3>
+          <h3>Total amount: {Math.trunc(calculateTotal())}sek</h3>
         </span>
       </div>
       <button className={styles.addToCartButton} onClick={handleCheckout}>
