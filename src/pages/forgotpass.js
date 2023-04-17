@@ -11,21 +11,14 @@ function ForgottPass({ person }) {
 
     let user = person.find((user) => user.username === inputUserName);
 
-    for (let i = 0; i < person.length; i++) {
-      if (person[i].username === inputUserName) {
-        setAnswer(user.password);
-        break;
-      } else {
-        setAnswer("No user found");
-      }
+    if (user) {
+      setAnswer(user.password);
+    } else {
+      setAnswer("No user found");
     }
   };
 
-  useEffect(() => {
-    if (answer) {
-      console.log(answer);
-    }
-  }, [answer]);
+  useEffect(() => {}, [answer]);
 
   return (
     <div className="main-container">
@@ -35,7 +28,7 @@ function ForgottPass({ person }) {
           <p>
             The password will be sent to the email associated with the userName
           </p>
-          <label className={formstyles.formlabel} for="username">
+          <label className={formstyles.formlabel} htmlFor="username">
             Username
           </label>
           <input

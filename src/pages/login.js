@@ -46,7 +46,7 @@ function Login({ loggedIn, logIn, logOut, person, setLoginUser, loginUser }) {
       <Hero header="Login" />
       <form className={formstyles.formstyle} onSubmit={handleSubmit}>
         <div className={formstyles.formcontainer}>
-          <label className={formstyles.formlabel} for="username">
+          <label className={formstyles.formlabel} htmlFor="username">
             Username
           </label>
           <input
@@ -57,7 +57,7 @@ function Login({ loggedIn, logIn, logOut, person, setLoginUser, loginUser }) {
             required
           />
 
-          <label className={formstyles.formlabel} for="password">
+          <label className={formstyles.formlabel} htmlFor="password">
             Password
           </label>
           <input
