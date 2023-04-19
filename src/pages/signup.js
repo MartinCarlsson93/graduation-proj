@@ -1,34 +1,70 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Hero from "../components/hero/Hero";
 import formstyles from "../styles/form.module.css";
 
 function SignUp({ person }) {
   const [answer, setAnswer] = useState("");
+  const [persons, setPersons] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (event) => {
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+
+  //   const data = {
+  //     id: person.length ? Math.max(...person.map((x) => x.id)) + 1 : 1,
+  //     username: event.target.username.value,
+  //     firstname: event.target.firstname.value,
+  //     lastname: event.target.lastname.value,
+  //     email: event.target.email.value,
+  //     birthday: event.target.birthdate.value,
+  //     password: event.target.password.value,
+  //   };
+
+  //   fetch(`http://localhost:3000/api/persons`, {
+  //     method: "POST",
+  //     body: JSON.stringify({
+  //       data: data,
+  //     }),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((_data) => {
+  //       setPersons([...persons, res]);
+  //     });
+
+  //   setAnswer(`Succesfully saved user for ${event.target.username.value}`);
+  //   //TODO ADD SO THAT WHEN WE SAVE IS ADDED TO PERSON JSON
+  // };
+
+  useEffect(() => {
+    setPersons(person);
+  }, [person]);
+
+  let handleSubmit = async (event) => {
+    setLoading(true);
     event.preventDefault();
+    try {
+      let res = await fetch(`${process.env.API_URL}/api/persons`, {
+        method: "POST",
+        body: {
+          id: person.length ? Math.max(...person.map((x) => x.id)) + 1 : 1,
+          username: event.target.username.value,
+          firstname: event.target.firstname.value,
+          lastname: event.target.lastname.value,
+          email: event.target.email.value,
+          birthday: event.target.birthdate.value,
+          password: event.target.password.value,
+        },
+      });
+      console.log(res.body);
 
-    const data = {
-      id: person.length ? Math.max(...person.map((x) => x.id)) + 1 : 1,
-      username: event.target.username.value,
-      firstname: event.target.firstname.value,
-      lastname: event.target.lastname.value,
-      email: event.target.email.value,
-      birthday: event.target.birthdate.value,
-      password: event.target.password.value,
-    };
-
-    const jsonData = JSON.stringify(data);
-
-    fetch(`${process.env.API_URL}/api/persons`, {
-      method: "POST",
-      body: jsonData,
-    })
-      .then((res) => res.json())
-      .then((_data) => console.log(_data));
-
-    setAnswer(`Succesfully saved user for ${event.target.username.value}`);
-    //TODO ADD SO THAT WHEN WE SAVE IS ADDED TO PERSON JSON
+      res = await res.json();
+      setPersons([...persons, res]);
+      setTitle("");
+      setContent("");
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
