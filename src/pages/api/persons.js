@@ -5,6 +5,7 @@ export default async function handler(req, res) {
   const db = client.db("Grocify");
   switch (req.method) {
     case "POST":
+      console.log(req.body);
       let stringify = JSON.stringify(req.body);
       let bodyObject = JSON.parse(stringify);
       console.log(stringify);

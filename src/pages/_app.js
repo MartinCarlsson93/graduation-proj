@@ -8,11 +8,18 @@ import { CartProvider } from "../components/context/cartProvider";
 
 import { Rubik } from "next/font/google";
 
+import { storyblokInit, apiPlugin } from "@storyblok/react";
+
 const rubik = Rubik({ subsets: ["latin"] });
 
 export default function App({ Component, pageProps }) {
   const [loggedIn, setLoggedIn] = useState(false);
   const [loggedInUser, setLoggedInUser] = useState("");
+
+  storyblokInit({
+    accessToken: process.env.STORYBLOCK_API_URL,
+    use: [apiPlugin],
+  });
 
   const logIn = () => setLoggedIn(true);
   const logOut = () => setLoggedIn(false);
