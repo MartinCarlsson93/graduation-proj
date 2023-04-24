@@ -5,7 +5,6 @@ import formstyles from "../styles/form.module.css";
 function SignUp({ person }) {
   const [answer, setAnswer] = useState("");
   const [persons, setPersons] = useState([]);
-  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
