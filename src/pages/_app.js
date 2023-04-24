@@ -2,7 +2,7 @@ import Head from "next/head";
 import "@/styles/globals.css";
 import Header from "../../src/components/Header";
 import Footer from "../../src/components/Footer";
-import { useState, useEffect, createContext } from "react";
+import { useState } from "react";
 import { FavouriteProvider } from "../components/context/favouriteContext";
 import { CartProvider } from "../components/context/cartProvider";
 

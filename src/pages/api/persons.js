@@ -5,11 +5,16 @@ export default async function handler(req, res) {
   const db = client.db("Grocify");
   switch (req.method) {
     case "POST":
-      let stringify = JSON.stringify(req.body);
-      let bodyObject = JSON.parse(stringify);
-      console.log(stringify);
-      let newPerson = await db.collection("person").insertOne(bodyObject);
-      res.json(newPerson);
+      console.log(req.body);
+      try {
+        const result = await db.collection("person").insertOne(req.body);
+        res.send(result.ops[0]);
+      } catch (err) {
+        console.error(err);
+        res.send({
+          Error: "An error has occured",
+        });
+      }
       break;
     case "GET":
       const data = await db.collection("person").find().toArray();

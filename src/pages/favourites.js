@@ -3,7 +3,7 @@ import Hero from "../components/hero/Hero";
 import styles from "@/styles/Home.module.css";
 import FavouriteCard from "../components/card/FavourtieCard";
 import { FavouriteContext } from "@/components/context/favouriteContext";
-import { useState, useEffect, useContext, useCallback } from "react";
+import { useState, useEffect, useContext } from "react";
 
 function Favourite() {
   const { items } = useContext(FavouriteContext);
