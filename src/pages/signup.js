@@ -3,6 +3,7 @@ import Hero from "../components/hero/Hero";
 import formstyles from "../styles/form.module.css";
 
 function SignUp({ person }) {
+  let baseUrl = "https://graduation-proj.vercel.app";
   const [answer, setAnswer] = useState("");
   const [persons, setPersons] = useState([]);
 
@@ -19,19 +20,39 @@ function SignUp({ person }) {
       password: event.target.password.value,
     };
 
-    let res = await fetch(`${process.env.API_URL}/api/persons`, {
-      method: "POST",
-      body: {
-        data: data,
-      },
-    })
-      .then((res) => res.json())
-      .then((_data) => {
-        setPersons([...persons, _data]);
-      });
-    setPersons([...persons, res]);
+    console.log(process.env.API_URL);
 
-    setAnswer(`Succesfully saved user for ${event.target.username.value}`);
+    if (process.env.API_URL) {
+      let res = await fetch(`${process.env.API_URL}/api/persons`, {
+        mode: "no-cors",
+        method: "POST",
+        body: {
+          data: data,
+        },
+      })
+        .then((res) => res.json())
+        .then((_data) => {
+          setPersons([...persons, _data]);
+        });
+      setPersons([...persons, res]);
+
+      setAnswer(`Succesfully saved user for ${event.target.username.value}`);
+    } else {
+      let res = await fetch(`${baseUrl}/api/persons`, {
+        mode: "no-cors",
+        method: "POST",
+        body: {
+          data: data,
+        },
+      })
+        .then((res) => res.json())
+        .then((_data) => {
+          setPersons([...persons, _data]);
+        });
+      setPersons([...persons, res]);
+
+      setAnswer(`Succesfully saved user for ${event.target.username.value}`);
+    }
   };
 
   useEffect(() => {
