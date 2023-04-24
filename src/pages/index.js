@@ -5,6 +5,7 @@ import search from "../../public/Assets/svgs/Search.svg";
 import { useState, useEffect, createContext } from "react";
 import Modal from "../components/modal/Modal";
 import { useCart } from "../components/context/cartProvider.js";
+import { getStoryblokApi } from "@storyblok/react";
 
 function Home({ products }) {
   const [thisProducts, setThisProducts] = useState([]);

@@ -30,8 +30,6 @@ function SignUp({ person }) {
       .then((_data) => {
         setPersons([...persons, _data]);
       });
-
-    res = await res.json();
     setPersons([...persons, res]);
 
     setAnswer(`Succesfully saved user for ${event.target.username.value}`);
